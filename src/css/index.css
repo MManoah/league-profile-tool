@@ -61,11 +61,13 @@ h3 {
 .icon {
   color: white;
   font-size: 50px;
-  margin-left: 21.4%;
-  margin-right: 21.4%;
-  display: inline;
+  margin-left: 3em;
+  display: inline-block;
   cursor: pointer;
   transition: color 500ms;
+}
+.icon-video{
+  margin-left: 6.11em;
 }
 .gitIconToggle {
   transition: color 500ms;
