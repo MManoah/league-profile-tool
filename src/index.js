@@ -55,8 +55,8 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, "index.html"));
 };
 
-// Disable refresh
 app.on("ready", createWindow);
+// Disable refresh
 app.whenReady().then(() => {
   globalShortcut.register("CommandOrControl+R", () => {
     return;
