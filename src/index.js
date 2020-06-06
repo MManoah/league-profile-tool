@@ -45,6 +45,7 @@ const createWindow = () => {
     resizable: false,
     webPreferences: {
       nodeIntegration: true,
+      devTools: false,
     },
     frame: false,
     icon: __dirname + "/images/icon.ico",

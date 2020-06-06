@@ -6,10 +6,14 @@
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.league.app",
+    "mac": {
+      "category": "Utility"
+    }
   },
   "keywords": [],
   "author": {
