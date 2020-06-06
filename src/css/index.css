@@ -129,3 +129,8 @@ h2 {
 img {
   color: white;
 }
+.version {
+  text-align: center;
+  color: white;
+  margin: 0;
+}
