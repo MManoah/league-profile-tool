@@ -3,7 +3,7 @@
 This application combines the icon changer, background changer, and also has a feature where you can see the dates of purchase of the the champions and skins on your account.
 
 ## How to install 
-[Click Here To Download Application](https://github.com/MManoah/league-profile-tool/releases/download/V.1/League.Profile.Tool.zip)
+[Click Here To Download Application](https://github.com/MManoah/league-profile-tool/releases/download/V.1.1/League.Profile.Tool.zip)
 then extract all the files somewhere and run league-profile-tool.exe
 
 [Releases](https://github.com/MManoah/league-profile-tool/releases)
