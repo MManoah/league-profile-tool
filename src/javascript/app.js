@@ -12,6 +12,13 @@ var options = {
     Accept: "application/json",
   },
 };
+window.addEventListener("keydown", function (event) {
+
+  if (event.key === 17 && event.key === 82) {
+    this.alert("yes")
+  } 
+}, true);
+
 connector.on("connect", (data) => {
   options["url"] = `${data["protocol"]}://${data["address"]}:${data["port"]}`;
   options["headers"]["Authorization"] =
