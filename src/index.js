@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, globalShortcut  } = require("electron");
+const { app, BrowserWindow, dialog, globalShortcut } = require("electron");
 const path = require("path");
 const exec = require("child_process").exec;
 
@@ -58,10 +58,10 @@ const createWindow = () => {
 // Disable refresh
 app.on("ready", createWindow);
 app.whenReady().then(() => {
-  globalShortcut.register('CommandOrControl+R', () => {
+  globalShortcut.register("CommandOrControl+R", () => {
     return;
-  })
-})
+  });
+});
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
   // On OS X it is common for applications and their menu bar
