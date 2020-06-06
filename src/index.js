@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog } = require("electron");
+const { app, BrowserWindow, dialog, globalShortcut  } = require("electron");
 const path = require("path");
 const exec = require("child_process").exec;
 
@@ -54,11 +54,14 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, "index.html"));
 };
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on("ready", createWindow);
 
+// Disable refresh
+app.on("ready", createWindow);
+app.whenReady().then(() => {
+  globalShortcut.register('CommandOrControl+R', () => {
+    return;
+  })
+})
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
   // On OS X it is common for applications and their menu bar
