@@ -7,7 +7,7 @@ Release Coming Soon
 
 ## Project Overview
 
-![](https://i.gyazo.com/34a8b7df3beece2ec6d8b611420d4d73.png)
+![](https://i.gyazo.com/dc7ededa4ec91880d88ba4bf6bfd63f9.png)
 
 ## Built With
 
