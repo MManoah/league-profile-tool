@@ -13,6 +13,17 @@
     "appId": "com.league.app",
     "mac": {
       "category": "Utility"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
     }
   },
   "keywords": [],
