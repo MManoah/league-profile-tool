@@ -13,7 +13,7 @@ then extract all the files somewhere and run league-profile-tool.exe
 
 ## Project Overview
 
-![](https://i.gyazo.com/36438cf96c5c84603f539c83f274f331.png)
+![](https://i.gyazo.com/b214e8944401394c1e137d8e0f4292b9.png)
 
 ## Built With
 
