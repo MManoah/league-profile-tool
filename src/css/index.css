@@ -11,7 +11,7 @@ body {
 }
 .sidebarcomp {
   text-align: center;
-  margin-top: 5.5em;
+  margin-top: 4.4em;
   display: block;
   -webkit-app-region: no-drag;
 }
@@ -66,7 +66,7 @@ h3 {
   cursor: pointer;
   transition: color 500ms;
 }
-.icon-video{
+.icon-video {
   margin-left: 6.11em;
 }
 .gitIconToggle {
@@ -135,4 +135,26 @@ img {
   text-align: center;
   color: white;
   margin: 0;
+}
+.rankOptions {
+  width: 18%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  cursor: pointer;
+}
+.rank {
+  margin-top: 10%;
+  margin-bottom: 0;
+}
+.rankOver {
+  transition: 0.5s;
+  transform: scale(1.2);
+}
+#setRank {
+  cursor: pointer;
+  transition: 0.5s;
+}
+.champions {
+  text-align: center;
 }
