@@ -97,7 +97,7 @@ h3 {
   margin-right: auto;
   display: block;
 }
-.ownedChamps{
+.ownedChamps {
   text-align: center;
 }
 .btn-large {
@@ -162,10 +162,10 @@ img {
 .champions {
   text-align: center;
 }
-#selectch{
+#selectch {
   margin-top: 5px;
 }
-.dragtop{
+.dragtop {
   height: 15px;
   background-color: transparent;
   -webkit-app-region: drag;
