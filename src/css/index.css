@@ -48,6 +48,7 @@ h3 {
   text-align: center;
   font-size: 4em;
   text-shadow: 4px 4px #1d1d29;
+  margin-top: 6px;
 }
 .contact {
   margin-top: 50%;
@@ -95,6 +96,9 @@ h3 {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+.ownedChamps{
+  text-align: center;
 }
 .btn-large {
   padding: 0.5%;
@@ -157,4 +161,12 @@ img {
 }
 .champions {
   text-align: center;
+}
+#selectch{
+  margin-top: 5px;
+}
+.dragtop{
+  height: 15px;
+  background-color: transparent;
+  -webkit-app-region: drag;
 }

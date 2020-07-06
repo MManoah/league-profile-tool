@@ -37,7 +37,7 @@ load().then(function () {
         });
         node.addEventListener("mousedown", function () {
           load().then(function (skins) {
-            champions.innerHTML = "<h1>Select a Skin</h1>";
+            champions.innerHTML = "<h1 style=\"margin-top: 5px\">Select a Skin</h1>";
             for (var i = 0; i < skins.length; i++) {
               var node = document.createElement("IMG");
               node.src = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${property}_${skins[i]["num"]}.jpg`;
