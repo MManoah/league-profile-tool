@@ -12,7 +12,6 @@ var options = {
     Accept: "application/json",
   },
 };
-
 connector.on("connect", (data) => {
   options["url"] = `${data["protocol"]}://${data["address"]}:${data["port"]}`;
   options["headers"]["Authorization"] =
