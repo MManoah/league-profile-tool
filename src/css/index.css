@@ -140,25 +140,6 @@ img {
   color: white;
   margin: 0;
 }
-.rankOptions {
-  width: 18%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  cursor: pointer;
-}
-.rank {
-  margin-top: 10%;
-  margin-bottom: 0;
-}
-.rankOver {
-  transition: 0.5s;
-  transform: scale(1.2);
-}
-#setRank {
-  cursor: pointer;
-  transition: 0.5s;
-}
 .champions {
   text-align: center;
 }
@@ -169,4 +150,28 @@ img {
   height: 15px;
   background-color: transparent;
   -webkit-app-region: drag;
+}
+.queueDiv {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.queue {
+  transition: 0.5s;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.queueButtonToggle {
+  transition: 0.5s;
+  transform: scale(1.2);
+}
+.rankMain {
+  text-align: center;
+}
+.rankedEmblem {
+  transition: 0.5s;
+  cursor: pointer;
 }
