@@ -1,7 +1,6 @@
 const { app, BrowserWindow, dialog, globalShortcut } = require("electron");
 const path = require("path");
 const exec = require("child_process").exec;
-require('dotenv').config();
 
 // Check if the user is logged into the league client
 const isRunning = (query, cb) => {
