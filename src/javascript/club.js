@@ -1,5 +1,8 @@
 var club = document.getElementById("clubs");
 var setClub = document.getElementById("setClub");
+var clubKeys = {
+    
+}
 var clubInfo = {
   lol: {
     clubsData: "",
@@ -16,7 +19,7 @@ if (setClub.disabled === true) {
   });
 }
 setClub.addEventListener("mousedown", function () {
-  clubInfo["lol"]["clubsData"] = process.env[club.value];
+  clubInfo["lol"]["clubsData"] = clubKeys[club.value];
   optionsCopy["body"] = JSON.stringify(clubInfo);
   run();
 });
@@ -26,7 +29,7 @@ function callback(error, response) {
     dialogOptions = {
       type: "info",
       title: "Success",
-      message: "The club has been set",
+      message: "The club was set",
     };
   } else {
     dialogOptions = {
