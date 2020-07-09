@@ -11,7 +11,7 @@ body {
 }
 .sidebarcomp {
   text-align: center;
-  margin-top: 4.4em;
+  margin-top: 3.6em;
   display: block;
   -webkit-app-region: no-drag;
 }
@@ -173,5 +173,24 @@ img {
 }
 .rankedEmblem {
   transition: 0.5s;
+  cursor: pointer;
+}
+.clubPage{
+  text-align: center;
+}
+#clubs{
+  font-size: 1.5em;
+  margin-top: 10em;
+  cursor: pointer;
+}
+#setClub{
+  padding: 0;
+  font-size: 1.7em;
+  width: 2em;
+  margin-top: 30%;
+  height: 30px;
+  padding-bottom: 1px;
+}
+.setClubEnabled{
   cursor: pointer;
 }

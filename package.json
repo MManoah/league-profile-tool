@@ -60,6 +60,7 @@
     }
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "electron-squirrel-startup": "^1.0.0",
     "lcu-connector": "^2.1.3",
     "request": "2.88.2"
