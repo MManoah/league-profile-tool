@@ -1,7 +1,7 @@
 {
   "name": "league-profile-tool",
   "productName": "league-profile-tool",
-  "version": "2",
+  "version": "2.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {
