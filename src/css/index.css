@@ -194,3 +194,6 @@ img {
 .setClubEnabled{
   cursor: pointer;
 }
+#sClub{
+  margin-bottom: -40px;
+}
