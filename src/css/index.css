@@ -11,7 +11,7 @@ body {
 }
 .sidebarcomp {
   text-align: center;
-  margin-top: 3.6em;
+  margin-top: 2.8em;
   display: block;
   -webkit-app-region: no-drag;
 }
@@ -48,7 +48,7 @@ h3 {
   text-align: center;
   font-size: 4em;
   text-shadow: 4px 4px #1d1d29;
-  margin-top: 6px;
+  margin-top: -19px;
 }
 .contact {
   margin-top: 50%;
@@ -144,10 +144,10 @@ img {
   text-align: center;
 }
 #selectch {
-  margin-top: 5px;
+  margin-top: -15px;
 }
 .dragtop {
-  height: 15px;
+  height: 40px;
   background-color: transparent;
   -webkit-app-region: drag;
 }
@@ -180,14 +180,14 @@ img {
 }
 #clubs{
   font-size: 1.5em;
-  margin-top: 10em;
+  margin-top: 5em;
   cursor: pointer;
 }
 #setClub{
   padding: 0;
   font-size: 1.7em;
   width: 2em;
-  margin-top: 30%;
+  margin-top: 40%;
   height: 30px;
   padding-bottom: 1px;
 }
@@ -195,10 +195,32 @@ img {
   cursor: pointer;
 }
 #sClub{
-  margin-bottom: -40px;
+  margin-top: -15px;
+  margin-bottom: 10px;
 }
 .clubT{
   color: white;
-  font-size: 20px;
+  font-size: 25px;
   margin-top: -25px;
+}
+.aramM{
+  text-align: center;
+}
+#aramHead{
+  margin-top: -15px;
+  font-size: 30px;
+  width: 125px;
+}
+.aramDes{
+  color: white;
+  font-size: 25px;
+  margin-bottom: -20px;
+}
+#boost{
+  padding: 0;
+  font-size: 30px;
+  height: 44px;
+  width: 64px;
+  margin-top: 14em;
+  cursor: pointer;
 }
