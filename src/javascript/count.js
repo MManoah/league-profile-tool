@@ -114,7 +114,7 @@ load().then(function () {
             });
             node.addEventListener("mousedown", function () {
               var content = document.querySelector(".content");
-              content.innerHTML = `<h1 style=\"margin-top: 5px\">Champion Purchase Date: ${date}</h1>`;
+              content.innerHTML = `<h1 style=\"margin-top: -15px\">Champion Purchase Date: ${date}</h1>`;
               if (this.alt in skinArr) {
                 var node1 = document.createElement("H2");
                 node1.innerText = JSON.stringify(
