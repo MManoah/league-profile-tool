@@ -24,7 +24,7 @@ for (var i = 0; i < queue.length; i++) {
   });
   queue[i].addEventListener("mousedown", function () {
     rankInfo["lol"]["rankedLeagueQueue"] = this.id;
-    rankMain.innerHTML = '<h1 style="margin-top: 5px">Select A Rank</h1>';
+    rankMain.innerHTML = '<h1 style="margin-top: -15px">Select A Rank</h1>';
     for (var i = 1; i < 28; i++) {
       var node = document.createElement("IMG");
       node.src = `../src/images/Ranked Emblems/${i}.png`;
