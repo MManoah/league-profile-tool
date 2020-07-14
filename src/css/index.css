@@ -228,6 +228,7 @@ img {
 }
 #clubCode{
   margin-top: 240px;
+  cursor: text;
 }
 .clubCodeFocus{
   margin-top: 16px !important;
