@@ -187,11 +187,9 @@ img {
   padding: 0;
   font-size: 1.7em;
   width: 2em;
-  margin-top: 40%;
+  margin-top: 10px;
   height: 30px;
   padding-bottom: 1px;
-}
-.setClubEnabled{
   cursor: pointer;
 }
 #sClub{
@@ -227,4 +225,10 @@ img {
 .club:hover{
   background-color: #3d91ff;
   cursor: pointer;
+}
+#clubCode{
+  margin-top: 240px;
+}
+.clubCodeFocus{
+  margin-top: 16px !important;
 }
