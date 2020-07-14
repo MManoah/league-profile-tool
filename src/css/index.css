@@ -224,3 +224,7 @@ img {
   margin-top: 14em;
   cursor: pointer;
 }
+.club:hover{
+  background-color: #3d91ff;
+  cursor: pointer;
+}
