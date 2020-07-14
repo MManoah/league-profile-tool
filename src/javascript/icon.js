@@ -1,5 +1,3 @@
-var iconButton = document.querySelector("#iconCode");
-var text = document.querySelector("#iconText");
 var imgButtons = document.querySelectorAll(".sumIcon");
 var iconCode = {
   profileIconId: 0,
@@ -23,12 +21,6 @@ for (var i = 0; i < imgButtons.length; i++) {
     run();
   });
 }
-
-iconButton.addEventListener("mousedown", function () {
-  iconCode["profileIconId"] = parseInt(text.value);
-  optionsCopy["body"] = JSON.stringify(iconCode);
-  run();
-});
 
 function callback(error, response) {
   var dialogOptions = {};
