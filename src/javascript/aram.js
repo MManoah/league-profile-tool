@@ -21,7 +21,6 @@ boost.addEventListener("mousedown", function () {
 
 function callback(error, response) {
   var dialogOptions = {};
-  console.log(response.statusCode);
   if (!error && response.statusCode === 204) {
     dialogOptions = {
       type: "info",
