@@ -1,8 +1,9 @@
 var club = document.getElementById("clubs");
 var setClub = document.getElementById("setClub");
+var clubCode = document.getElementById("clubCode")
 var clubKeys = {
-    
-}
+
+};
 var clubInfo = {
   lol: {
     clubsData: "",
@@ -11,15 +12,19 @@ var clubInfo = {
 var optionsCopy = Object.assign({}, options);
 optionsCopy["url"] = `${optionsCopy["url"]}/lol-chat/v1/me`;
 optionsCopy["method"] = "PUT";
-
-if (setClub.disabled === true) {
-  club.addEventListener("change", function () {
-    setClub.disabled = false;
-    setClub.classList.add("setClubEnabled");
-  });
-}
-setClub.addEventListener("mousedown", function () {
+club.addEventListener("focus", function () {
+  clubCode.classList.add("clubCodeFocus");
+});
+club.addEventListener("blur", function () {
+  clubCode.classList.remove("clubCodeFocus");
+});
+club.addEventListener("change", function () {
   clubInfo["lol"]["clubsData"] = clubKeys[club.value];
+  optionsCopy["body"] = JSON.stringify(clubInfo);
+  run();
+});
+setClub.addEventListener("mousedown", function () {
+  clubInfo["lol"]["clubsData"] = clubCode.value;
   optionsCopy["body"] = JSON.stringify(clubInfo);
   run();
 });
