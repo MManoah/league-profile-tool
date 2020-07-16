@@ -9,7 +9,7 @@ This application combines the icon changer, background changer, and also has a f
 
 then extract all the files somewhere and run league-profile-tool.exe
 
-To see old builds/change: [Releases](https://github.com/MManoah/league-profile-tool/releases)
+*To see old builds/change:* [Releases](https://github.com/MManoah/league-profile-tool/releases)
 
 ## Project Overview
 
