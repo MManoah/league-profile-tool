@@ -15,9 +15,7 @@ var options = {
 
 try {
   var fs = require("fs");
-  var file = fs
-    .readFileSync('config\\clientPath.txt')
-    .toString();
+  var file = fs.readFileSync("config\\clientPath.txt").toString();
   if (clientPath !== "") {
     var clientPath = file.split("\\").join("/");
     connector._dirPath = clientPath;
