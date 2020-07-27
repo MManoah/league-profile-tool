@@ -10,7 +10,7 @@ boost.addEventListener("mousedown", function () {
     type: "question",
     title: "Confirmation",
     message:
-      "Are you sure you want to continue? \n(Make sure you don't have enough RP for a boost)",
+      "Are you sure you want to continue? \n(Make sure you don't have enough RP for a boost)\nThis exploit can also be detected!",
     buttons: ["Yes", "No"],
   };
 

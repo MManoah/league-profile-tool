@@ -1,7 +1,7 @@
 const { app, BrowserWindow, dialog, globalShortcut } = require("electron");
 const path = require("path");
 const exec = require("child_process").exec;
-
+var pathSpecified = false;
 // Check if the user is logged into the league client
 const isRunning = (query, cb) => {
   let platform = process.platform;
@@ -23,11 +23,20 @@ const isRunning = (query, cb) => {
     cb(stdout.toLowerCase().indexOf(query.toLowerCase()) > -1);
   });
 };
-
+try {
+  var fs  = require("fs");
+  var clientPath = fs.readFileSync('config\\clientPath.txt').toString();
+  if (clientPath !== "") pathSpecified = true;
+} catch (err) {
+  dialog.showErrorBox("Error", 'The path file is corrupted');
+}
 // status will be true or false
 isRunning("LeagueClient.exe", (status) => {
-  if (!status) {
-    dialog.showErrorBox("Error", "Please login to the league client");
+  if (!status && !pathSpecified) {
+    dialog.showErrorBox(
+      "Error",
+      "Could not find the league client, please login or specify the client path"
+    );
     process.exit();
   }
 });

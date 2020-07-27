@@ -12,6 +12,17 @@ var options = {
     Accept: "application/json",
   },
 };
+
+try {
+  var fs = require("fs");
+  var file = fs
+    .readFileSync('config\\clientPath.txt')
+    .toString();
+  if (clientPath !== "") {
+    var clientPath = file.split("\\").join("/");
+    connector._dirPath = clientPath;
+  }
+} catch (err) {}
 connector.on("connect", (data) => {
   options["url"] = `${data["protocol"]}://${data["address"]}:${data["port"]}`;
   options["headers"]["Authorization"] =

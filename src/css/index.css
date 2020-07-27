@@ -11,7 +11,7 @@ body {
 }
 .sidebarcomp {
   text-align: center;
-  margin-top: 2.8em;
+  margin-top: 2.3em;
   display: block;
   -webkit-app-region: no-drag;
 }
@@ -233,3 +233,22 @@ img {
 .clubCodeFocus{
   margin-top: 16px !important;
 }
+.statusGroup{
+  
+  text-align: center;
+}
+.status{
+  font-size: 25px;
+  width: 678px;
+  height: 557px;
+  cursor: text;
+}
+#setStatus{
+  padding: 0;
+  font-size: 25px;
+  height: 35px;
+  width: 100px;
+  margin-top: 0em;
+  cursor: pointer;
+}
+
