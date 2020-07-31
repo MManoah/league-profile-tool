@@ -4,6 +4,8 @@ var iconCode = {
   key: "backgroundSkinId",
   value: 0,
 };
+
+// Get the latest patch
 async function load() {
   let url = "https://ddragon.leagueoflegends.com/api/versions.json";
   let obj = await (await fetch(url)).json();
