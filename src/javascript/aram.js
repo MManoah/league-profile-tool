@@ -1,42 +1,16 @@
 var boost = document.getElementById("boost");
-var optionsCopy = Object.assign({}, options);
-optionsCopy[
-  "url"
-] = `${optionsCopy["url"]}/lol-champ-select/v1/team-boost/purchase`;
-optionsCopy["method"] = "POST";
 
 boost.addEventListener("mousedown", function () {
-  var dialogOptions = {
+  const dialogOptions = {
     type: "question",
     title: "Confirmation",
     message:
-      "Are you sure you want to continue? \n(Make sure you don't have enough RP for a boost)\nThis exploit can also be detected!",
+        "Are you sure you want to continue? \n(Make sure you don't have enough RP for a boost)\nThis exploit can also be detected!",
     buttons: ["Yes", "No"],
   };
 
   dialog.showMessageBox(dialogOptions).then((response) => {
-    if (response.response === 0) run();
+    if (response.response === 0)
+      makeRequest("POST", "", "/lol-champ-select/v1/team-boost/purchase");
   });
 });
-
-function callback(error, response) {
-  var dialogOptions = {};
-  if (!error && response.statusCode === 204) {
-    dialogOptions = {
-      type: "info",
-      title: "Success",
-      message: `Success`,
-    };
-  } else {
-    dialogOptions = {
-      type: "error",
-      title: "Error",
-      message: "There was an error",
-    };
-  }
-  dialog.showMessageBox(dialogOptions);
-}
-
-function run() {
-  request(optionsCopy, callback);
-}

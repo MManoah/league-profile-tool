@@ -10,18 +10,11 @@ async function load() {
   version = obj[0];
 }
 load().then(function () {
-  var optionsCopy = Object.assign({}, options);
-  optionsCopy[
-    "url"
-  ] = `${optionsCopy["url"]}/lol-summoner/v1/current-summoner/summoner-profile`; // Endpoint to set summoner profile background
-  optionsCopy["method"] = "POST";
-
   async function load() {
     let url = `http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`;
     let obj = await (await fetch(url)).json();
     return obj["data"];
   }
-
   load().then(function (keys) {
     try {
       for (const property in keys) {
@@ -52,8 +45,7 @@ load().then(function () {
               });
               node.addEventListener("mousedown", function () {
                 iconCode["value"] = parseInt(this.alt);
-                optionsCopy["body"] = JSON.stringify(iconCode);
-                run();
+                makeRequest("POST", iconCode, "/lol-summoner/v1/current-summoner/summoner-profile")
               });
               champions.appendChild(node);
             }
@@ -61,8 +53,7 @@ load().then(function () {
           async function load() {
             let url = `http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${property}.json`;
             let obj = await (await fetch(url)).json();
-            var skin = obj["data"][property]["skins"];
-            return skin;
+            return obj["data"][property]["skins"];
           }
         });
         champions.appendChild(node);
@@ -74,25 +65,4 @@ load().then(function () {
       );
     }
   });
-
-  function callback(error, response, body) {
-    var dialogOptions = {};
-    if (!error && response.statusCode == 200) {
-      dialogOptions = {
-        type: "info",
-        title: "Success",
-        message: "The background has been set",
-      };
-    } else {
-      dialogOptions = {
-        type: "error",
-        title: "Error",
-        message: "There was an error setting the background",
-      };
-    }
-    dialog.showMessageBox(dialogOptions);
-  }
-  function run() {
-    request(optionsCopy, callback);
-  }
 });

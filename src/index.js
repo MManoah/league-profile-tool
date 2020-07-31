@@ -1,7 +1,7 @@
 const { app, BrowserWindow, dialog, globalShortcut } = require("electron");
 const path = require("path");
 const exec = require("child_process").exec;
-var pathSpecified = false;
+let pathSpecified = false;
 // Check if the user is logged into the league client
 const isRunning = (query, cb) => {
   let platform = process.platform;
@@ -24,8 +24,8 @@ const isRunning = (query, cb) => {
   });
 };
 try {
-  var fs  = require("fs");
-  var clientPath = fs.readFileSync('config\\clientPath.txt').toString();
+  const fs = require("fs");
+  const clientPath = fs.readFileSync('config\\clientPath.txt').toString();
   if (clientPath !== "") pathSpecified = true;
 } catch (err) {
   dialog.showErrorBox("Error", 'The path file is corrupted');

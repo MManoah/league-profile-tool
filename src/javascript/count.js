@@ -12,11 +12,10 @@ async function load() {
 load().then(function () {
   getSummonerID();
   function callback(error, response, body) {
-    var dialogOptions = {};
     if (!error && response.statusCode === 200) {
       summonerID = JSON.parse(body);
       summonerID = summonerID["summonerId"];
-      var optionsCopy2 = Object.assign({}, options);
+      let optionsCopy2 = Object.assign({}, options);
       optionsCopy2[
         "url"
       ] = `${optionsCopy2["url"]}/lol-champions/v1/inventories/${summonerID}/champions`;
@@ -37,16 +36,14 @@ load().then(function () {
     try {
       request(value, function (error, response, body) {
         if (!error) {
-          var championsList = JSON.parse(body);
-          var championCount = 0;
-          var skinCount = 0;
-          var championArr = {};
-          var skinArr = {};
-          for (var i = 0; i < championsList.length; i++) {
+          let championsList = JSON.parse(body);
+          let championArr = {};
+          let skinArr = {};
+          for (let i = 0; i < championsList.length; i++) {
             if (championsList[i]["ownership"]["owned"]) {
-              var alias = championsList[i]["alias"];
-              var name = championsList[i]["name"];
-              var date =
+              let alias = championsList[i]["alias"];
+              let name = championsList[i]["name"];
+              let date =
                 championsList[i]["ownership"]["rental"]["purchaseDate"];
               date = new Date(date).toLocaleString("en-US");
               championArr[name] = {
@@ -57,10 +54,10 @@ load().then(function () {
               championArr[name]["alias"] = alias;
               championArr[name]["name"] = name;
               championArr[name]["date"] = date;
-              for (var x = 1; x < championsList[i]["skins"].length; x++) {
+              for (let x = 1; x < championsList[i]["skins"].length; x++) {
                 if (championsList[i]["skins"][x]["ownership"]["owned"]) {
-                  var skinName = championsList[i]["skins"][x]["name"];
-                  var skinDate =
+                  let skinName = championsList[i]["skins"][x]["name"];
+                  let skinDate =
                     championsList[i]["skins"][x]["ownership"]["rental"][
                       "purchaseDate"
                     ];
@@ -102,7 +99,7 @@ load().then(function () {
             });
           }
           function addItem(image, champion, date) {
-            var node = document.createElement("IMG");
+            let node = document.createElement("IMG");
             node.src = image;
             node.classList.add("championIcon");
             node.alt = champion;
@@ -113,10 +110,10 @@ load().then(function () {
               this.classList.remove("imgButtonToggle");
             });
             node.addEventListener("mousedown", function () {
-              var content = document.querySelector(".content");
+              let content = document.querySelector(".content");
               content.innerHTML = `<h1 style=\"margin-top: -15px\">Champion Purchase Date: ${date}</h1>`;
               if (this.alt in skinArr) {
-                var node1 = document.createElement("H2");
+                let node1 = document.createElement("H2");
                 node1.innerText = JSON.stringify(
                   skinArr[this.alt]["skins"],
                   null,

@@ -1,12 +1,12 @@
 const { dialog } = require("electron").remote;
 const { remote } = require("electron");
-var sidePanel = document.querySelectorAll("h3");
-var activePanel = sidePanel[0];
+const sidePanel = document.querySelectorAll("h3");
+let activePanel = sidePanel[0];
 const LCUConnector = require("lcu-connector");
 const connector = new LCUConnector();
 const request = require("request");
-var exit = document.querySelector("#exit");
-var options = {
+const exit = document.querySelector("#exit");
+const options = {
   rejectUnauthorized: false,
   headers: {
     Accept: "application/json",
@@ -14,11 +14,10 @@ var options = {
 };
 
 try {
-  var fs = require("fs");
-  var file = fs.readFileSync("config\\clientPath.txt").toString();
-  if (clientPath !== "") {
-    var clientPath = file.split("\\").join("/");
-    connector._dirPath = clientPath;
+  const fs = require("fs");
+  const file = fs.readFileSync("config\\clientPath.txt").toString();
+  if (file.split("\\").join("/") !== "") {
+    connector._dirPath = file.split("\\").join("/");
   }
 } catch (err) {}
 connector.on("connect", (data) => {
@@ -71,8 +70,8 @@ for (var i = 0; i < sidePanel.length - 1; i++) {
 active();
 function active() {
   activePanel.classList.add("barMouseOver");
-  var page = activePanel.id;
-  var xhr = new XMLHttpRequest();
+  const page = activePanel.id;
+  const xhr = new XMLHttpRequest();
   xhr.open("GET", `./html/${page}.html`, true);
   xhr.onreadystatechange = function () {
     if (this.readyState !== 4) return;
@@ -83,9 +82,40 @@ function active() {
   loadjs(page);
 }
 function loadjs(page) {
-  var script = document.createElement("script");
+  const script = document.createElement("script");
   script.type = "text/javascript";
   script.src = `javascript/${page}.js`;
   script.defer = true;
   document.body.appendChild(script);
+}
+function makeRequest(method, body, endPoint) {
+  const optionsCopy = Object.assign({}, options);
+  optionsCopy[
+    "url"
+  ] = `${optionsCopy["url"]}${endPoint}`; 
+  optionsCopy["method"] = method;
+  optionsCopy["body"] = JSON.stringify(body);
+  run(optionsCopy);
+}
+
+function callback(error, response) {
+  let dialogOptions = {};
+  if (!error && (response.statusCode === 201 || response.statusCode === 200 || response.statusCode === 204)) {
+    dialogOptions = {
+      type: "info",
+      title: "Success",
+      message: `The request has been made`,
+    };
+  } else {
+    dialogOptions = {
+      type: "error",
+      title: "Error",
+      message: "There was an error",
+    };
+  }
+  dialog.showMessageBox(dialogOptions);
+}
+
+function run(command) {
+  request(command, callback);
 }
