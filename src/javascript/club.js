@@ -97,7 +97,9 @@ setClub.addEventListener("mousedown", function () {
         optionsCopy["method"] = "GET";
         request(optionsCopy, function (error, response) {
           var summoner = JSON.parse(response.body);
-          var server = summoner.gameTag;
+          var summonerID = summoner.id;
+          var server = summonerID.substring(summonerID.indexOf("@")+1, summonerID.length);
+          var server = server.substring(0, server.indexOf("."));
           var chatID = `${ID.substring(
             0,
             ID.indexOf("@")
