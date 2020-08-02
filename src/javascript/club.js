@@ -3,6 +3,7 @@ var setClub = document.getElementById("setClub");
 var clubCode = document.getElementById("clubCode");
 var friendName = document.getElementById("friendName");
 var lobbyMember = document.getElementById("lobbyMember");
+var champSelectMem = document.getElementById("champSelect");
 var clubKeys = {
 
 };
@@ -25,13 +26,14 @@ setClub.addEventListener("mousedown", function () {
   if (
     clubCode.value === "" &&
     friendName.value === "" &&
-    lobbyMember.value === ""
+    lobbyMember.value === "" &&
+    champSelectMem.value === ""
   ) {
     const dialogOptions = {
       type: "error",
       title: "Error",
       message:
-        "Custom club data, friends name, or lobby member cannot be empty",
+        "Custom club data, friends name, or lobby members cannot be empty",
     };
     return dialog.showMessageBox(dialogOptions);
   } else if (friendName.value !== "") {
@@ -84,6 +86,59 @@ setClub.addEventListener("mousedown", function () {
         dialog.showMessageBox(dialogOptions);
       }
     });
+  } else if (champSelectMem.value !== "") {
+    var optionsCopy = Object.assign({}, options);
+    optionsCopy["url"] = `${optionsCopy["url"]}/lol-champ-select/v1/session`;
+    optionsCopy["method"] = "GET";
+    request(optionsCopy, function (error, response) {
+      if (response.statusCode === 404) {
+        dialogOptions = {
+          type: "error",
+          title: "Error",
+          message: "You are not in champ select",
+        };
+        return dialog.showMessageBox(dialogOptions);
+      }
+      var champSelectLobby = JSON.parse(response.body);
+      var lobbyID = champSelectLobby.chatDetails.chatRoomName;
+      var server = getServer();
+      var champSelectID = `${lobbyID.substring(
+        0,
+        lobbyID.indexOf("@")
+      )}@champ-select.${server}.pvp.net/participants`;
+      optionsCopy = Object.assign({}, options);
+      optionsCopy[
+        "url"
+      ] = `${optionsCopy["url"]}/lol-chat/v1/conversations/${champSelectID}`;
+      optionsCopy["method"] = "GET";
+      request(optionsCopy, function (error, response) {
+        if (response.statusCode === 404) {
+          dialogOptions = {
+            type: "error",
+            title: "Error",
+            message: "There was an error",
+          };
+          return dialog.showMessageBox(dialogOptions);
+        }
+        var summoners = JSON.parse(response.body);
+        for (var i = 0; i < summoners.length; i++) {
+          if (
+            champSelectMem.value.toUpperCase() ===
+            summoners[i].name.toUpperCase()
+          ) {
+            clubInfo["lol"]["clubsData"] = summoners[i].lol.clubsData;
+            clubCode.value = summoners[i].lol.clubsData;
+            return makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+          }
+        }
+        dialogOptions = {
+          type: "error",
+          title: "Error",
+          message: "Could not find that summoner",
+        };
+        return dialog.showMessageBox(dialogOptions);
+      });
+    });
   } else if (lobbyMember.value !== "") {
     var optionsCopy = Object.assign({}, options);
     optionsCopy["url"] = `${optionsCopy["url"]}/lol-lobby/v2/lobby`;
@@ -92,41 +147,33 @@ setClub.addEventListener("mousedown", function () {
       if (response.statusCode !== 404) {
         var chat = JSON.parse(response.body);
         var ID = chat.chatRoomId;
+        var server = getServer();
+        var chatID = `${ID.substring(
+          0,
+          ID.indexOf("@")
+        )}@sec.${server}.pvp.net`;
+        var lobby = `/lol-chat/v1/conversations/${chatID}/participants`;
         optionsCopy = Object.assign({}, options);
-        optionsCopy["url"] = `${optionsCopy["url"]}/lol-chat/v1/me`;
+        optionsCopy["url"] = `${optionsCopy["url"]}${lobby}`;
         optionsCopy["method"] = "GET";
         request(optionsCopy, function (error, response) {
-          var summoner = JSON.parse(response.body);
-          var summonerID = summoner.id;
-          var server = summonerID.substring(summonerID.indexOf("@")+1, summonerID.length);
-          var server = server.substring(0, server.indexOf("."));
-          var chatID = `${ID.substring(
-            0,
-            ID.indexOf("@")
-          )}@sec.${server}.pvp.net`;
-          var lobby = `/lol-chat/v1/conversations/${chatID}/participants`;
-          optionsCopy = Object.assign({}, options);
-          optionsCopy["url"] = `${optionsCopy["url"]}${lobby}`;
-          optionsCopy["method"] = "GET";
-          request(optionsCopy, function (error, response) {
-            var participants = JSON.parse(response.body);
-            for (var i = 0; i < participants.length; i++) {
-              if (
-                lobbyMember.value.toUpperCase() ===
-                participants[i].name.toUpperCase()
-              ) {
-                clubInfo["lol"]["clubsData"] = participants[i].lol.clubsData;
-                clubCode.value = participants[i].lol.clubsData;
-                return makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
-              }
+          var participants = JSON.parse(response.body);
+          for (var i = 0; i < participants.length; i++) {
+            if (
+              lobbyMember.value.toUpperCase() ===
+              participants[i].name.toUpperCase()
+            ) {
+              clubInfo["lol"]["clubsData"] = participants[i].lol.clubsData;
+              clubCode.value = participants[i].lol.clubsData;
+              return makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
             }
-            dialogOptions = {
-              type: "error",
-              title: "Error",
-              message: "Could not find that lobby member",
-            };
-            return dialog.showMessageBox(dialogOptions);
-          });
+          }
+          dialogOptions = {
+            type: "error",
+            title: "Error",
+            message: "Could not find that lobby member",
+          };
+          return dialog.showMessageBox(dialogOptions);
         });
       } else {
         dialogOptions = {
