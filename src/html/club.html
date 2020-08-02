@@ -12,7 +12,7 @@
       <select
         name="clubs"
         id="clubs"
-        onfocus="this.size=6;"
+        onfocus="this.size=5;"
         onblur="this.size=1;"
         onchange="this.size=1; this.blur();"
       >
@@ -49,9 +49,17 @@
       <div class="clubData">
         <input
           type="text"
+          id="champSelect"
+          class="form-control"
+          placeholder="Champ Select Member"
+        />
+      </div>
+      <div class="clubData">
+        <input
+          type="text"
           id="lobbyMember"
           class="form-control"
-          placeholder="Lobby Member"
+          placeholder="Custom Game Member"
         />
       </div>
         <div class="clubData">

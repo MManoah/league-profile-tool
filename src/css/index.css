@@ -259,8 +259,11 @@ img {
 }
 #friendName{
   cursor: text;
-  margin-top: 160px;
+  margin-top: 110px;
 }
 #lobbyMember{
+  cursor: text;
+}
+#champSelect{
   cursor: text;
 }

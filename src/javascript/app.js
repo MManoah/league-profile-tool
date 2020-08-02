@@ -6,7 +6,7 @@ const LCUConnector = require("lcu-connector");
 const connector = new LCUConnector();
 const request = require("request");
 const exit = document.querySelector("#exit");
-
+var server = "";
 // For LCU connection
 const options = {
   rejectUnauthorized: false,
@@ -30,6 +30,18 @@ connector.on("connect", (data) => {
   options["url"] = `${data["protocol"]}://${data["address"]}:${data["port"]}`;
   options["headers"]["Authorization"] =
     "Basic " + btoa(`${data["username"]}:${data["password"]}`);
+  optionsCopy = Object.assign({}, options);
+  optionsCopy["url"] = `${optionsCopy["url"]}/lol-chat/v1/me`;
+  optionsCopy["method"] = "GET";
+  request(optionsCopy, function (error, response) {
+    var summoner = JSON.parse(response.body);
+    var summonerID = summoner.id;
+    server = summonerID.substring(
+      summonerID.indexOf("@") + 1,
+      summonerID.length
+    );
+    server = server.substring(0, server.indexOf("."));
+  });
 });
 connector.on("disconnect", (data) => {
   dialog.showErrorBox(
@@ -132,4 +144,8 @@ function callback(error, response) {
 
 function run(command) {
   request(command, callback);
+}
+
+function getServer() {
+  return server;
 }
