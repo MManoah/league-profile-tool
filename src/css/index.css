@@ -227,11 +227,11 @@ img {
   cursor: pointer;
 }
 #clubCode{
-  margin-top: 240px;
+  margin-top: 0px;
   cursor: text;
 }
 .clubCodeFocus{
-  margin-top: 16px !important;
+  margin-top: 0px !important;
 }
 .statusGroup{
   
@@ -251,4 +251,16 @@ img {
   margin-top: 0em;
   cursor: pointer;
 }
-
+.clubData {
+  margin-top: 1em;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#friendName{
+  cursor: text;
+  margin-top: 160px;
+}
+#lobbyMember{
+  cursor: text;
+}
