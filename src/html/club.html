@@ -12,7 +12,7 @@
       <select
         name="clubs"
         id="clubs"
-        onfocus="this.size=8;"
+        onfocus="this.size=6;"
         onblur="this.size=1;"
         onchange="this.size=1; this.blur();"
       >
@@ -36,8 +36,23 @@
         <option class="club" value="¿kys">¿kys</option>
       </select>
       <br />
-      <form onkeypress="return event.keyCode !== 13;">
-        <div class="form-group">
+      <div class="clubData">
+        <input
+          type="text"
+          id="friendName"
+          class="form-control"
+          placeholder="Friends Name"
+        />
+      </div>
+      <div class="clubData">
+        <input
+          type="text"
+          id="lobbyMember"
+          class="form-control"
+          placeholder="Lobby Member"
+        />
+      </div>
+        <div class="clubData">
           <input
             type="text"
             id="clubCode"
@@ -45,7 +60,6 @@
             placeholder="Custom Club Data"
           />
         </div>
-      </form>
       <button id="setClub" type="button">Set</button>
     </div>
   </body>
