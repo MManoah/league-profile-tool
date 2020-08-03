@@ -267,3 +267,12 @@ img {
 #champSelect{
   cursor: text;
 }
+#getClubData{
+  padding: 0;
+  font-size: 1.7em;
+  width: 7.1em;
+  margin-top: 10px;
+  height: 30px;
+  padding-bottom: 1px;
+  cursor: pointer;
+}
