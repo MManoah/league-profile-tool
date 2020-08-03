@@ -4,6 +4,7 @@ var clubCode = document.getElementById("clubCode");
 var friendName = document.getElementById("friendName");
 var lobbyMember = document.getElementById("lobbyMember");
 var champSelectMem = document.getElementById("champSelect");
+var getClubData = document.getElementById("getClubData");
 var clubKeys = {
 
 };
@@ -23,6 +24,12 @@ club.addEventListener("change", function () {
   makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
 });
 setClub.addEventListener("mousedown", function () {
+  getClub(true);
+});
+getClubData.addEventListener("mousedown", function(){
+  getClub(false);
+})
+function getClub(sendRequest){
   if (
     clubCode.value === "" &&
     friendName.value === "" &&
@@ -63,10 +70,11 @@ setClub.addEventListener("mousedown", function () {
                 message: "That friends club data could not be found",
               };
             } else {
-              clubInfo["lol"]["clubsData"] = friends[i].lol.clubsData;
-              makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
-              clubCode.value = friends[i].lol.clubsData;
-              return;
+              if (sendRequest){
+                clubInfo["lol"]["clubsData"] = friends[i].lol.clubsData;
+                makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+              }
+              return clubCode.value = friends[i].lol.clubsData;
             }
             return dialog.showMessageBox(dialogOptions);
           }
@@ -126,9 +134,11 @@ setClub.addEventListener("mousedown", function () {
             champSelectMem.value.toUpperCase() ===
             summoners[i].name.toUpperCase()
           ) {
-            clubInfo["lol"]["clubsData"] = summoners[i].lol.clubsData;
-            clubCode.value = summoners[i].lol.clubsData;
-            return makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+            if (sendRequest){
+              clubInfo["lol"]["clubsData"] = summoners[i].lol.clubsData;
+              makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+            }
+            return clubCode.value = summoners[i].lol.clubsData;
           }
         }
         dialogOptions = {
@@ -163,9 +173,11 @@ setClub.addEventListener("mousedown", function () {
               lobbyMember.value.toUpperCase() ===
               participants[i].name.toUpperCase()
             ) {
-              clubInfo["lol"]["clubsData"] = participants[i].lol.clubsData;
-              clubCode.value = participants[i].lol.clubsData;
-              return makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+              if (sendRequest){
+                clubInfo["lol"]["clubsData"] = participants[i].lol.clubsData;
+                makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+              }
+              return clubCode.value = participants[i].lol.clubsData;
             }
           }
           dialogOptions = {
@@ -185,7 +197,9 @@ setClub.addEventListener("mousedown", function () {
       }
     });
   } else {
-    clubInfo["lol"]["clubsData"] = clubCode.value;
-    makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+    if (sendRequest){
+      clubInfo["lol"]["clubsData"] = clubCode.value;
+      makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+    }
   }
-});
+}
