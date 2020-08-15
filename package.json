@@ -24,7 +24,10 @@
           ]
         }
       ]
-    }
+    },
+    "extraFiles": [
+      "config"
+    ]
   },
   "keywords": [],
   "author": {
