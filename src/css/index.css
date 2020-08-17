@@ -57,7 +57,8 @@ h3 {
   width: 260px;
   height: 40px;
   border: none;
-  cursor: auto;
+  cursor: text;
+  user-select: text;
 }
 .icon {
   color: white;
