@@ -1,5 +1,7 @@
 # League of Legends Profile Tool
 
+Discord Server For Help: https://discord.gg/cXGCvt
+
 This application combines the icon changer, background changer, and also has a feature where you can see the dates of purchase of the the champions and skins on your account.
 
 ## How to install 
