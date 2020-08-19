@@ -1,6 +1,6 @@
 var homeIcons = document.querySelectorAll(".icon");
 var newVersion = document.querySelector("#newVersion");
-mouseDown(0, "https://github.com/MManoah");
+mouseDown(0, "https://github.com/MManoah/league-profile-tool");
 mouseDown(1, "https://www.youtube.com/c/mmanoah");
 async function load() {
   let url =
