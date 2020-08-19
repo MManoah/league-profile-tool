@@ -11,7 +11,7 @@ body {
 }
 .sidebarcomp {
   text-align: center;
-  margin-top: 2.3em;
+  margin-top: 1.8em;
   display: block;
   -webkit-app-region: no-drag;
 }
@@ -54,11 +54,11 @@ h3 {
   margin-top: 50%;
   text-align: center;
   font-size: 2.5em;
-  width: 260px;
+  width: auto;
   height: 40px;
   border: none;
-  cursor: text;
   user-select: text;
+  cursor: default;
 }
 .icon {
   color: white;
@@ -176,15 +176,15 @@ img {
   transition: 0.5s;
   cursor: pointer;
 }
-.clubPage{
+.clubPage {
   text-align: center;
 }
-#clubs{
+#clubs {
   font-size: 1.5em;
   margin-top: 5em;
   cursor: pointer;
 }
-#setClub{
+#setClub {
   padding: 0;
   font-size: 1.7em;
   width: 2em;
@@ -193,29 +193,29 @@ img {
   padding-bottom: 1px;
   cursor: pointer;
 }
-#sClub{
+#sClub {
   margin-top: -15px;
   margin-bottom: 10px;
 }
-.clubT{
+.clubT {
   color: white;
   font-size: 25px;
   margin-top: -25px;
 }
-.aramM{
+.aramM {
   text-align: center;
 }
-#aramHead{
+#aramHead {
   margin-top: -15px;
   font-size: 30px;
   width: 125px;
 }
-.aramDes{
+.aramDes {
   color: white;
   font-size: 25px;
   margin-bottom: -20px;
 }
-#boost{
+#boost {
   padding: 0;
   font-size: 30px;
   height: 44px;
@@ -223,28 +223,27 @@ img {
   margin-top: 13em;
   cursor: pointer;
 }
-.club:hover{
+.club:hover {
   background-color: #3d91ff;
   cursor: pointer;
 }
-#clubCode{
+#clubCode {
   margin-top: 0px;
   cursor: text;
 }
-.clubCodeFocus{
+.clubCodeFocus {
   margin-top: 0px !important;
 }
-.statusGroup{
-  
+.statusGroup {
   text-align: center;
 }
-.status{
+.status {
   font-size: 25px;
   width: 678px;
   height: 557px;
   cursor: text;
 }
-#setStatus{
+#setStatus {
   padding: 0;
   font-size: 25px;
   height: 35px;
@@ -258,17 +257,17 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-#friendName{
+#friendName {
   cursor: text;
   margin-top: 110px;
 }
-#lobbyMember{
+#lobbyMember {
   cursor: text;
 }
-#champSelect{
+#champSelect {
   cursor: text;
 }
-#getClubData{
+#getClubData {
   padding: 0;
   font-size: 1.7em;
   width: 7.1em;
@@ -276,4 +275,38 @@ img {
   height: 30px;
   padding-bottom: 1px;
   cursor: pointer;
+}
+#iconText {
+  cursor: text;
+}
+#customIcon {
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  line-height: 20px;
+  margin-top: 50px;
+}
+.iconButtons {
+  display: inline-block;
+  cursor: pointer;
+}
+.iconB {
+  text-align: center;
+}
+.faqBody {
+  text-align: left;
+  color: white;
+  font-size: 30px;
+  margin-left: 5px;
+}
+dl {
+  margin: 0;
+}
+dt {
+  text-decoration: underline;
+}
+dd{
+  font-size: 25px;
+  -webkit-text-stroke-width: 0.7px;
+  -webkit-text-stroke-color: white;
 }
