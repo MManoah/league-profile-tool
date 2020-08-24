@@ -9,9 +9,11 @@
       </h4>
       <h4 class="clubT">*And Restart This Program*</h4>
       <h4 class="clubT">*You must also be in a club first*</h4>
+      <h4 class="clubT">*User Clubs is located in config/clubs.json*</h4>
       <select
         name="clubs"
-        id="clubs"
+        id="presetClubs"
+        class="clubs"
         onfocus="this.size=5;"
         onblur="this.size=1;"
         onchange="this.size=1; this.blur();"
@@ -19,6 +21,18 @@
         <option disabled selected value> Choose a Club </option>
         <option class="club" value="clubName">clubName</option>
       </select>
+      <br>
+      <select
+        name="clubs2"
+        id="customClubs"
+        class="clubs bottomClubs"
+        onfocus="this.size=5;"
+        onblur="this.size=1;"
+        onchange="this.size=1; this.blur();"
+      >
+        <option disabled selected value> User Clubs </option>
+      </select>
+
       <br />
       <div class="clubData">
         <input
