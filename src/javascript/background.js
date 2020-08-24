@@ -47,7 +47,7 @@ load().then(function () {
               });
               node.addEventListener("mousedown", function () {
                 iconCode["value"] = parseInt(this.alt);
-                makeRequest("POST", iconCode, "/lol-summoner/v1/current-summoner/summoner-profile")
+                LeagueClient.makeRequest("POST", iconCode, "/lol-summoner/v1/current-summoner/summoner-profile")
               });
               champions.appendChild(node);
             }

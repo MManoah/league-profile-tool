@@ -17,14 +17,18 @@ for (let i = 0; i < imgButtons.length; i++) {
   });
   imgButtons[i].addEventListener("mousedown", function () {
     iconCode["profileIconId"] = parseInt(this.alt);
-    makeRequest("PUT", iconCode, "/lol-summoner/v1/current-summoner/icon");
+    LeagueClient.makeRequest(
+      "PUT",
+      iconCode,
+      "/lol-summoner/v1/current-summoner/icon"
+    );
   });
 }
 iconButton.addEventListener("mousedown", function () {
   let value = parseInt(text.value);
   if (!isNaN(value) && !(value < 0)) {
     anyIcon["icon"] = value;
-    makeRequest("PUT", anyIcon, "/lol-chat/v1/me");
+    LeagueClient.makeRequest("PUT", anyIcon, "/lol-chat/v1/me");
   } else {
     let dialogOptions = {
       type: "error",

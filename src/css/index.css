@@ -11,7 +11,7 @@ body {
 }
 .sidebarcomp {
   text-align: center;
-  margin-top: 1.8em;
+  margin-top: 0em;
   display: block;
   -webkit-app-region: no-drag;
 }
@@ -36,6 +36,7 @@ h3 {
   border-width: thin;
   color: white;
   cursor: pointer;
+  font-size: 23px;
 }
 .barMouseOver {
   transition: border 500ms, color 500ms;
@@ -179,10 +180,13 @@ img {
 .clubPage {
   text-align: center;
 }
-#clubs {
+.clubs {
   font-size: 1.5em;
-  margin-top: 5em;
+  margin-top: 1em;
   cursor: pointer;
+}
+.bottomClubs{
+  margin-top: 1em !important;
 }
 #setClub {
   padding: 0;
@@ -283,8 +287,8 @@ img {
   text-align: center;
   color: white;
   font-size: 30px;
-  line-height: 20px;
-  margin-top: 50px;
+  line-height: 25px;
+  margin-top: 30px;
 }
 .iconButtons {
   display: inline-block;
@@ -309,4 +313,39 @@ dd{
   font-size: 25px;
   -webkit-text-stroke-width: 0.7px;
   -webkit-text-stroke-color: white;
+}
+.customContent{
+  text-align: center;
+}
+#endPoint{
+  cursor: text;
+  font-size: 20px;
+}
+#method{
+  font-size: 18px;
+  cursor: pointer;
+}
+#requestBody{
+  font-size: 32px;
+  cursor: text;
+}
+#response{
+  font-size: 32px;
+  overflow:hidden;
+}
+#requestLCU{
+  padding: 0;
+  font-size: 1.5em;
+  width: 5.5em;
+  height: 30px;
+  padding-bottom: 1px;
+  cursor: pointer;
+}
+#lcuEndpoints{
+  padding: 0;
+  font-size: 1.5em;
+  width: 6em;
+  height: 30px;
+  padding-bottom: 1px;
+  cursor: pointer;
 }

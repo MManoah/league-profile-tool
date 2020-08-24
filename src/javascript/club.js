@@ -1,10 +1,38 @@
-var club = document.getElementById("clubs");
+var club = document.querySelectorAll(".clubs");
 var setClub = document.getElementById("setClub");
 var clubCode = document.getElementById("clubCode");
 var friendName = document.getElementById("friendName");
 var lobbyMember = document.getElementById("lobbyMember");
 var champSelectMem = document.getElementById("champSelect");
 var getClubData = document.getElementById("getClubData");
+var customClubs = document.getElementById("customClubs");
+var fs = require("fs");
+
+// Attempt to set any user set clubs in config/clubs.json
+try {
+  const jsonString = fs.readFileSync("./config/clubs.json");
+  const data = JSON.parse(jsonString);
+  Object.keys(data).forEach(function (key) {
+    var option = document.createElement("option");
+    option.label = key;
+    option.text = key;
+    option.classList.add("club");
+    option.value = data[key];
+    customClubs.add(option);
+  });
+} catch (err) {
+  const dialogOptions = {
+    type: "error",
+    title: "Error",
+    message: `There was an error with custom user clubs (${err})\nPlease make sure config/clubs.json is in proper JSON format`,
+    buttons: ["Open Json Validator", "Ok"],
+  };
+  dialog.showMessageBox(dialogOptions).then((response) => {
+    if (response.response === 0)
+      require("electron").shell.openExternal("https://jsonlint.com/");
+  });
+}
+
 var clubKeys = {
 
 };
@@ -13,23 +41,30 @@ var clubInfo = {
     clubsData: "",
   },
 };
-club.addEventListener("focus", function () {
-  friendName.classList.add("clubCodeFocus");
+for (var i = 0; i < club.length; i++) {
+  club[i].addEventListener("focus", function () {
+    friendName.classList.add("clubCodeFocus");
+  });
+  club[i].addEventListener("blur", function () {
+    friendName.classList.remove("clubCodeFocus");
+  });
+}
+club[0].addEventListener("change", function () {
+  clubInfo["lol"]["clubsData"] = clubKeys[this.value];
+  LeagueClient.makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
 });
-club.addEventListener("blur", function () {
-  friendName.classList.remove("clubCodeFocus");
+club[1].addEventListener("change", function () {
+  clubInfo["lol"]["clubsData"] = this.value;
+  LeagueClient.makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
 });
-club.addEventListener("change", function () {
-  clubInfo["lol"]["clubsData"] = clubKeys[club.value];
-  makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
-});
+
 setClub.addEventListener("mousedown", function () {
   getClub(true);
 });
-getClubData.addEventListener("mousedown", function(){
+getClubData.addEventListener("mousedown", function () {
   getClub(false);
-})
-function getClub(sendRequest){
+});
+function getClub(sendRequest) {
   if (
     clubCode.value === "" &&
     friendName.value === "" &&
@@ -44,8 +79,8 @@ function getClub(sendRequest){
     };
     return dialog.showMessageBox(dialogOptions);
   } else if (friendName.value !== "") {
-    const optionsCopy = Object.assign({}, options);
-    optionsCopy["url"] = `${optionsCopy["url"]}/lol-chat/v1/friends`;
+    let optionsCopy = Object.assign({}, LeagueClient.options);
+    optionsCopy["url"] = LeagueClient.url + "/lol-chat/v1/friends";
     optionsCopy["method"] = "GET";
     request(optionsCopy, function (error, response) {
       if (response.statusCode !== 404) {
@@ -70,11 +105,11 @@ function getClub(sendRequest){
                 message: "That friends club data could not be found",
               };
             } else {
-              if (sendRequest){
+              if (sendRequest) {
                 clubInfo["lol"]["clubsData"] = friends[i].lol.clubsData;
-                makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+                LeagueClient.makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
               }
-              return clubCode.value = friends[i].lol.clubsData;
+              return (clubCode.value = friends[i].lol.clubsData);
             }
             return dialog.showMessageBox(dialogOptions);
           }
@@ -95,8 +130,8 @@ function getClub(sendRequest){
       }
     });
   } else if (champSelectMem.value !== "") {
-    var optionsCopy = Object.assign({}, options);
-    optionsCopy["url"] = `${optionsCopy["url"]}/lol-champ-select/v1/session`;
+    let optionsCopy = Object.assign({}, LeagueClient.options);
+    optionsCopy["url"] = LeagueClient.url + "/lol-champ-select/v1/session";
     optionsCopy["method"] = "GET";
     request(optionsCopy, function (error, response) {
       if (response.statusCode === 404) {
@@ -109,15 +144,15 @@ function getClub(sendRequest){
       }
       var champSelectLobby = JSON.parse(response.body);
       var lobbyID = champSelectLobby.chatDetails.chatRoomName;
-      var server = getServer();
+      var server = LeagueClient.getServer();
       var champSelectID = `${lobbyID.substring(
         0,
         lobbyID.indexOf("@")
       )}@champ-select.${server}.pvp.net/participants`;
-      optionsCopy = Object.assign({}, options);
+      // optionsCopy = Object.assign({}, options);
       optionsCopy[
         "url"
-      ] = `${optionsCopy["url"]}/lol-chat/v1/conversations/${champSelectID}`;
+      ] = `${LeagueClient.url}/lol-chat/v1/conversations/${champSelectID}`;
       optionsCopy["method"] = "GET";
       request(optionsCopy, function (error, response) {
         if (response.statusCode === 404) {
@@ -134,11 +169,11 @@ function getClub(sendRequest){
             champSelectMem.value.toUpperCase() ===
             summoners[i].name.toUpperCase()
           ) {
-            if (sendRequest){
+            if (sendRequest) {
               clubInfo["lol"]["clubsData"] = summoners[i].lol.clubsData;
-              makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+              LeagueClient.makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
             }
-            return clubCode.value = summoners[i].lol.clubsData;
+            return (clubCode.value = summoners[i].lol.clubsData);
           }
         }
         dialogOptions = {
@@ -150,21 +185,20 @@ function getClub(sendRequest){
       });
     });
   } else if (lobbyMember.value !== "") {
-    var optionsCopy = Object.assign({}, options);
-    optionsCopy["url"] = `${optionsCopy["url"]}/lol-lobby/v2/lobby`;
+    let optionsCopy = Object.assign({}, LeagueClient.options);
+    optionsCopy["url"] = LeagueClient.url + "/lol-lobby/v2/lobby";
     optionsCopy["method"] = "GET";
     request(optionsCopy, function (error, response) {
       if (response.statusCode !== 404) {
         var chat = JSON.parse(response.body);
         var ID = chat.chatRoomId;
-        var server = getServer();
+        var server = LeagueClient.getServer();
         var chatID = `${ID.substring(
           0,
           ID.indexOf("@")
         )}@sec.${server}.pvp.net`;
         var lobby = `/lol-chat/v1/conversations/${chatID}/participants`;
-        optionsCopy = Object.assign({}, options);
-        optionsCopy["url"] = `${optionsCopy["url"]}${lobby}`;
+        optionsCopy["url"] = LeagueClient.url + lobby;
         optionsCopy["method"] = "GET";
         request(optionsCopy, function (error, response) {
           var participants = JSON.parse(response.body);
@@ -173,11 +207,11 @@ function getClub(sendRequest){
               lobbyMember.value.toUpperCase() ===
               participants[i].name.toUpperCase()
             ) {
-              if (sendRequest){
+              if (sendRequest) {
                 clubInfo["lol"]["clubsData"] = participants[i].lol.clubsData;
-                makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+                LeagueClient.makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
               }
-              return clubCode.value = participants[i].lol.clubsData;
+              return (clubCode.value = participants[i].lol.clubsData);
             }
           }
           dialogOptions = {
@@ -197,9 +231,9 @@ function getClub(sendRequest){
       }
     });
   } else {
-    if (sendRequest){
+    if (sendRequest) {
       clubInfo["lol"]["clubsData"] = clubCode.value;
-      makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
+      LeagueClient.makeRequest("PUT", clubInfo, "/lol-chat/v1/me");
     }
   }
 }
