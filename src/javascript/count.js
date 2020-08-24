@@ -1,6 +1,6 @@
 var displayChampArea = document.querySelector(".ownedChamps");
-var optionsCopy = Object.assign({}, options);
-optionsCopy["url"] = `${optionsCopy["url"]}/lol-summoner/v1/current-summoner`;
+var optionsCopy = Object.assign({}, LeagueClient.options);
+optionsCopy["url"] = LeagueClient.url + "/lol-summoner/v1/current-summoner";
 optionsCopy["method"] = "GET";
 var summonerID = 0;
 var version = 0;
@@ -15,12 +15,12 @@ load().then(function () {
     if (!error && response.statusCode === 200) {
       summonerID = JSON.parse(body);
       summonerID = summonerID["summonerId"];
-      let optionsCopy2 = Object.assign({}, options);
-      optionsCopy2[
+      // let optionsCopy2 = Object.assign({}, options);
+      optionsCopy[
         "url"
-      ] = `${optionsCopy2["url"]}/lol-champions/v1/inventories/${summonerID}/champions`;
-      optionsCopy2["method"] = "GET";
-      getOwnedChampions(optionsCopy2);
+      ] = `${LeagueClient.url}/lol-champions/v1/inventories/${summonerID}/champions`;
+      optionsCopy["method"] = "GET";
+      getOwnedChampions(optionsCopy);
     } else {
       dialog.showErrorBox(
         "Error",
