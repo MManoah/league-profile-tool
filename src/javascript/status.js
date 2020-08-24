@@ -6,5 +6,5 @@ var message = {
 
 setStatus.addEventListener("mousedown", function () {
   message["statusMessage"] = text.value;
-  makeRequest("PUT", message, "/lol-chat/v1/me");
+  LeagueClient.makeRequest("PUT", message, "/lol-chat/v1/me");
 });
