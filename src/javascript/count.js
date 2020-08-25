@@ -15,7 +15,6 @@ load().then(function () {
     if (!error && response.statusCode === 200) {
       summonerID = JSON.parse(body);
       summonerID = summonerID["summonerId"];
-      // let optionsCopy2 = Object.assign({}, options);
       optionsCopy[
         "url"
       ] = `${LeagueClient.url}/lol-champions/v1/inventories/${summonerID}/champions`;
