@@ -46,12 +46,12 @@ class ClientConnection {
       url: this.url,
     };
     this.#endpoints = {
-      presetIcon: "/lol-summoner/v1/current-summoner/icon",
-      lolChat: "/lol-chat/v1/me",
-      aram: "/lol-champ-select/v1/team-boost/purchase",
-      profile: "/lol-summoner/v1/current-summoner/summoner-profile",
-      friends: "/lol-chat/v1/friends",
-      conversations: "/lol-chat/v1/conversations",
+      presetIcon: "/lol-summoner/v1/current-summoner/icon/",
+      lolChat: "/lol-chat/v1/me/",
+      aram: "/lol-champ-select/v1/team-boost/purchase/",
+      profile: "/lol-summoner/v1/current-summoner/summoner-profile/",
+      friends: "/lol-chat/v1/friends/",
+      conversations: "/lol-chat/v1/conversations/",
     };
   }
 
@@ -204,6 +204,7 @@ class ClientConnection {
           options["method"] = "GET";
           request(options, function (error, response) {
             let summoners = JSON.parse(response.body);
+            console.log(summoners);
             for (let i = 0; i < summoners.length; i++) {
               let currentSummoner = summoners[i];
               if (currentSummoner.name.toUpperCase() === summonerSearch) {

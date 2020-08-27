@@ -4,6 +4,7 @@ var clubCode = document.getElementById("clubCode");
 var friendName = document.getElementById("friendName");
 var lobbyMember = document.getElementById("lobbyMember");
 var champSelectMem = document.getElementById("champSelect");
+var postGameMem = document.getElementById("postGame");
 var getClubData = document.getElementById("getClubData");
 var customClubs = document.getElementById("customClubs");
 var fs = require("fs");
@@ -69,7 +70,8 @@ function getClub(sendRequest) {
     clubCode.value === "" &&
     friendName.value === "" &&
     lobbyMember.value === "" &&
-    champSelectMem.value === ""
+    champSelectMem.value === "" &&
+    postGameMem.value === ""
   ) {
     return dialog.showErrorBox(
       "Error",
@@ -80,6 +82,13 @@ function getClub(sendRequest) {
   } else if (champSelectMem.value !== "") {
     LeagueClient.requestClub(
       "championSelect",
+      champSelectMem.value.toUpperCase(),
+      sendRequest,
+      clubInfo
+    );
+  } else if (postGameMem.value !== "") {
+    LeagueClient.requestClub(
+      "postGame",
       champSelectMem.value.toUpperCase(),
       sendRequest,
       clubInfo

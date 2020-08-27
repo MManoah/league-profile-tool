@@ -4,9 +4,7 @@
     <div class="dragtop"></div>
     <div class="clubPage">
       <h1 id="sClub">Select A Club</h1>
-      <h4 class="clubT">
-        *Logout and Log Back In If It Doesn't Work*
-      </h4>
+      <h4 class="clubT">*Logout and Log Back In If It Doesn't Work*</h4>
       <h4 class="clubT">*And Restart This Program*</h4>
       <h4 class="clubT">*You must also be in a club first*</h4>
       <h4 class="clubT">*User Clubs is located in config/clubs.json*</h4>
@@ -18,10 +16,10 @@
         onblur="this.size=1;"
         onchange="this.size=1; this.blur();"
       >
-        <option disabled selected value> Choose a Club </option>
+        <option disabled selected value>Choose a Club</option>
         <option class="club" value="clubName">clubName</option>
       </select>
-      <br>
+      <br />
       <select
         name="clubs2"
         id="customClubs"
@@ -30,9 +28,14 @@
         onblur="this.size=1;"
         onchange="this.size=1; this.blur();"
       >
-        <option disabled selected value> User Clubs </option>
+        <option disabled selected value>User Clubs</option>
       </select>
-
+      <h4 class="lobbyInfo" id="topLobbyInfo">
+        *Enter summoners name, they MUST be connected to the chat.
+      </h4>
+      <h4 class="lobbyInfo">
+        If they left the lobby, it will not work*
+      </h4>
       <br />
       <div class="clubData">
         <input
@@ -47,7 +50,15 @@
           type="text"
           id="champSelect"
           class="form-control"
-          placeholder="Champ Select Member"
+          placeholder="Champ Select Lobby"
+        />
+      </div>
+      <div class="clubData">
+        <input
+          type="text"
+          id="postGame"
+          class="form-control"
+          placeholder="Post Game Lobby"
         />
       </div>
       <div class="clubData">
@@ -55,7 +66,7 @@
           type="text"
           id="lobbyMember"
           class="form-control"
-          placeholder="Custom Game Member"
+          placeholder="Custom/Party Lobby"
         />
       </div>
       <div class="clubData">

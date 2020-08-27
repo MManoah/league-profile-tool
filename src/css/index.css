@@ -263,7 +263,7 @@ img {
 }
 #friendName {
   cursor: text;
-  margin-top: 110px;
+  margin-top: 0px;
 }
 #lobbyMember {
   cursor: text;
@@ -348,4 +348,16 @@ dd{
   height: 30px;
   padding-bottom: 1px;
   cursor: pointer;
+}
+.lobbyInfo{
+  color: white;
+  margin: 0;
+  font-size: 25px;
+  line-height: 20px;
+}
+#topLobbyInfo{
+  margin-top: 20px;
+}
+#postGame{
+  cursor: text;
 }
