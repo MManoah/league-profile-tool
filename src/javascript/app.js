@@ -180,7 +180,7 @@ class ClientConnection {
     });
   }
 
-  // Gets club of person in custom game lobby or champ select
+  // Gets club of person in custom game lobby, champ select, or post game
   requestClub(lobbyType, summonerSearch, sendRequest, clubInfo) {
     this.#options["url"] = this.#url + this.#endpoints.conversations;
     this.#options["method"] = "GET";
