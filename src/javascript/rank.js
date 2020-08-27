@@ -61,7 +61,7 @@ for (let i = 0; i < queue.length; i++) {
       node.addEventListener("mousedown", function () {
         rankInfo["lol"]["rankedLeagueTier"] = this.alt;
         rankInfo["lol"]["rankedLeagueDivision"] = this.id;
-        LeagueClient.makeRequest("PUT", rankInfo, "/lol-chat/v1/me");
+        LeagueClient.requestRank(rankInfo);
       });
       rankMain.appendChild(node);
     }

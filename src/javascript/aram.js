@@ -10,11 +10,6 @@ boost.addEventListener("mousedown", function () {
   };
 
   dialog.showMessageBox(dialogOptions).then((response) => {
-    if (response.response === 0)
-      LeagueClient.makeRequest(
-        "POST",
-        "",
-        "/lol-champ-select/v1/team-boost/purchase"
-      );
+    if (response.response === 0) LeagueClient.requestAram();
   });
 });
