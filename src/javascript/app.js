@@ -20,7 +20,6 @@ try {
   }
 } catch (err) {}
 
-// Make a request to get the server and create a ClientConnection to make requests
 connector.on("connect", (data) => {
   let url = `${data["protocol"]}://${data["address"]}:${data["port"]}`;
   let auth = "Basic " + btoa(`${data["username"]}:${data["password"]}`);
