@@ -17,7 +17,7 @@ then extract all the files somewhere and run league-profile-tool.exe
 
 ### Purpose 
 
-I developed this with no prior html/css/js experience and started working on this just to learn javascript and DOM manipulation.
+I developed this with no prior html/css/js knowledge and started working on this just to learn Javascript and DOM manipulation.
 
 ### Preview
 
