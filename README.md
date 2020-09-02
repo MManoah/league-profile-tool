@@ -2,7 +2,7 @@
 
 ### Discord Server For Help: https://discord.gg/7C65msm
 
-This application combines the icon changer, background changer, and also has a feature where you can see the dates of purchase of the the champions and skins on your account.
+This application shows how data sent to the LCU can be modified or read to change visual stuff like, icon, background, hovercard, or read data such as profile data, friends, and more.
 
 ## How to install 
 [Click Here To Download Application 64 BIT](https://github.com/MManoah/league-profile-tool/releases/download/V.2.4.6/League.Profile.Tool.zip)
@@ -21,7 +21,7 @@ I developed this with no prior html/css/js knowledge and started working on this
 
 ### Preview
 
-![](https://i.gyazo.com/b214e8944401394c1e137d8e0f4292b9.png)
+![](https://i.gyazo.com/4a20d1ae3e616e6e133115e15a650552.png)
 
 ## Built With
 
