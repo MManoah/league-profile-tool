@@ -203,7 +203,6 @@ class ClientConnection {
           options["method"] = "GET";
           request(options, function (error, response) {
             let summoners = JSON.parse(response.body);
-            console.log(summoners);
             for (let i = 0; i < summoners.length; i++) {
               let currentSummoner = summoners[i];
               if (currentSummoner.name.toUpperCase() === summonerSearch) {
