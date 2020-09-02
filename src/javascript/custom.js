@@ -7,7 +7,7 @@ var endpointList = document.getElementById("lcuEndpoints");
 
 endpointList.addEventListener("mousedown", function () {
   require("electron").shell.openExternal(
-    "http://www.mingweisamuel.com/lcu-schema/tool/"
+    "http://lcu.vivide.re/"
   );
 });
 
