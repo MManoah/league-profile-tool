@@ -1,48 +1,5 @@
-const { app, BrowserWindow, dialog, globalShortcut } = require("electron");
+const { app, BrowserWindow, globalShortcut } = require("electron");
 const path = require("path");
-const exec = require("child_process").exec;
-let pathSpecified = false;
-
-// Check if the user is logged into the league client
-const isRunning = (query, cb) => {
-  let platform = process.platform;
-  let cmd = "";
-  switch (platform) {
-    case "win32":
-      cmd = `tasklist`;
-      break;
-    case "darwin":
-      cmd = `ps -ax | grep ${query}`;
-      break;
-    case "linux":
-      cmd = `ps -A`;
-      break;
-    default:
-      break;
-  }
-  exec(cmd, (err, stdout, stderr) => {
-    cb(stdout.toLowerCase().indexOf(query.toLowerCase()) > -1);
-  });
-};
-
-// Check if clientPath file contains the client path or if the file is corrupted
-try {
-  const fs = require("fs");
-  const clientPath = fs.readFileSync("config\\clientPath.txt").toString();
-  if (clientPath !== "") pathSpecified = true;
-} catch (err) {
-  dialog.showErrorBox("Error", "The path file is corrupted");
-}
-// status will be true or false
-isRunning("LeagueClient.exe", (status) => {
-  if (!status && !pathSpecified) {
-    dialog.showErrorBox(
-      "Error",
-      "Could not find the league client, please login or specify the client path"
-    );
-    process.exit();
-  }
-});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
