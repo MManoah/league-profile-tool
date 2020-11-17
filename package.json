@@ -74,6 +74,6 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.51",
     "@electron-forge/maker-zip": "^6.0.0-beta.51",
     "electron-builder": "22.8.0",
-    "electron": "9.0.2"
+    "electron": "9.3.1"
   }
 }
