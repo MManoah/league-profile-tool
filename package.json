@@ -1,8 +1,8 @@
 {
   "name": "league-profile-tool",
   "productName": "league-profile-tool",
-  "version": "2.0.0",
-  "description": "My Electron application description",
+  "version": "2.4.6",
+  "description": "Tool that interacts with the Riot LCU",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -11,6 +11,7 @@
   },
   "build": {
     "appId": "com.league.app",
+    "productName": "League Profile Tool",
     "mac": {
       "category": "Utility"
     },

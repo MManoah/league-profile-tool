@@ -11,7 +11,7 @@ body {
 }
 .sidebarcomp {
   text-align: center;
-  margin-top: 0em;
+  margin-top: 2.4em;
   display: block;
   -webkit-app-region: no-drag;
 }
@@ -49,7 +49,7 @@ h3 {
   text-align: center;
   font-size: 4em;
   text-shadow: 4px 4px #1d1d29;
-  margin-top: -19px;
+  margin-top: -25px;
 }
 .contact {
   margin-top: 50%;

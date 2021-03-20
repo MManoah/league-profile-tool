@@ -32,6 +32,6 @@ iconButton.addEventListener("mousedown", function () {
 lolNames.addEventListener("mousedown", function (e) {
   e.preventDefault();
   require("electron").shell.openExternal(
-    "https://lolnames.gg/en/statistics/icons/"
+    "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/"
   );
 });
