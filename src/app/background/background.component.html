@@ -1,0 +1,19 @@
+<main>
+  <div class="search-champion">
+    <mat-form-field *ngIf="!showingSkins">
+      <mat-label>Search for a champion</mat-label>
+      <input matInput name="search" [(ngModel)]="searchText" placeholder="Ex. Ahri">
+    </mat-form-field>
+    <button (click)="showingSkins = false" *ngIf="showingSkins" mat-flat-button color="primary">Go Back</button>
+  </div>
+  <div *ngIf="!showingSkins">
+    <span class="champions" *ngFor="let champion of championImages | champions: searchText">
+        <button mat-stroked-button (click)="getSkins(champion.alt)"><img src="{{champion.src}}" alt="{{champion.alt}}"/></button>
+    </span>
+  </div>
+  <div *ngIf="showingSkins">
+    <span class="championSkin" *ngFor="let skin of skinsImages">
+        <button mat-stroked-button (click)="setBackground(skin.alt)"><img class="skinSplash" src="{{skin.src}}" alt="{{skin.alt}}"/></button>
+    </span>
+  </div>
+</main>

@@ -1,0 +1,20 @@
+h1{
+  font-size: 2.7rem;
+}
+.versions {
+  margin-top: 5rem;
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.mat-card-header{
+  display: block;
+}
+#linkButtons{
+  margin-top: 5rem;
+  text-align: center;
+}
+button{
+  margin: 1rem;
+}

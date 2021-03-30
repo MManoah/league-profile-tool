@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/League-Profile-Tool.iml" filepath="$PROJECT_DIR$/.idea/League-Profile-Tool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/league-profile-tool.iml" filepath="$PROJECT_DIR$/.idea/league-profile-tool.iml" />
     </modules>
   </component>
 </project>

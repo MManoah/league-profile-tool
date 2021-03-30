@@ -1,0 +1,15 @@
+img{
+  height: 100px;
+  width: 100px;
+}
+.mat-stroked-button{
+  margin: 0.5rem;
+  padding: 1px;
+}
+.mat-form-field{
+  text-align: center;
+}
+.skinSplash{
+  width: 187px;
+  height: 348px;
+}

@@ -1,0 +1,27 @@
+.mat-card{
+  max-width: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+img{
+  height: 100px;
+  width: 100px;
+}
+.mat-stroked-button{
+  margin: 0.5rem;
+  padding: 1px;
+}
+.mat-form-field{
+  text-align: center;
+}
+table{
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 1.2rem;
+}
+td{
+  padding-right: 1rem;
+}

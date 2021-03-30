@@ -1,0 +1,25 @@
+<main>
+  <h1>{{title}}</h1>
+  <mat-card class="versions">
+    <mat-card-header>
+      <mat-card-title>Current Version</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{currentVersion}}</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="versions">
+    <mat-card-header>
+      <mat-card-title>Newest Version</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{newestVersion}}</p>
+    </mat-card-content>
+  </mat-card>
+  <div id="linkButtons">
+    <button mat-raised-button color="primary" (click)="github()">Github</button>
+    <button mat-raised-button color="primary" (click)="youtube()">Youtube</button>
+  </div>
+</main>
+
+

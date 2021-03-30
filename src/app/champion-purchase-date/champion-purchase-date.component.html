@@ -1,0 +1,30 @@
+<main>
+  <div *ngIf="ownedChamps === null">
+    <mat-card>This will show you the champions you own, with the dates you purchased them</mat-card>
+    <br>
+    <button mat-raised-button color="primary" (click)="getOwnership()">Get Dates</button>
+  </div>
+  <div class="search-champion">
+    <mat-form-field *ngIf="ownedChamps !== null && !showingSkins">
+      <mat-label>Search for a champion</mat-label>
+      <input matInput name="search" [(ngModel)]="searchText" placeholder="Ex. Ahri">
+    </mat-form-field>
+    <button (click)="showingSkins = false" *ngIf="showingSkins" mat-flat-button color="primary">Go Back</button>
+  </div>
+  <div *ngIf="!showingSkins">
+    <span class="champions" *ngFor="let champion of ownedChamps | champions: searchText">
+        <button mat-stroked-button (click)="showSkins(champion)"><img src="http://ddragon.leagueoflegends.com/cdn/{{currentVersion}}/img/champion/{{champion.alt}}.png" alt="{{champion.name}}"/></button>
+    </span>
+  </div>
+  <table *ngIf="showingSkins" matSort (matSortChange)="sortData($event)">
+    <tr>
+      <th mat-sort-header="name">Name</th>
+      <th mat-sort-header="purchased">Purchased</th>
+    </tr>
+
+    <tr *ngFor="let champion of sortedData">
+      <td>{{champion.name}}</td>
+      <td>{{champion.purchased}}</td>
+    </tr>
+  </table>
+</main>

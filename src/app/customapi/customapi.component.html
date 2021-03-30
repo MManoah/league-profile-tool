@@ -1,0 +1,25 @@
+<main>
+  <form (submit)="$event.preventDefault()">
+  <mat-form-field appearance="fill">
+    <mat-label>Method</mat-label>
+    <mat-select [(value)]="method">
+      <mat-option *ngFor="let method of methods" [value]="method">
+        {{method}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Endpoint</mat-label>
+      <input matInput [(ngModel)]="endPoint">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendRequest()">Request</button>
+  </form>
+  <mat-form-field class="default" appearance="fill">
+    <mat-label>Body</mat-label>
+    <textarea matInput [(ngModel)]="body"></textarea>
+  </mat-form-field>
+  <mat-form-field class="default" appearance="fill">
+    <mat-label>Response</mat-label>
+    <textarea matInput [(ngModel)]="response"></textarea>
+  </mat-form-field>
+</main>

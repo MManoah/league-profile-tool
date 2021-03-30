@@ -27,6 +27,8 @@ I developed this with no prior html/css/js knowledge and started working on this
 
 * [Lcu Connector](https://github.com/Pupix/lcu-connector) - Accessing the LCU API
 * [Electron](https://github.com/electron/electron)
+* [Angular CLI](https://github.com/angular/angular-cli)
+* Typescript
 * HTML
 * CSS
 * Javascript

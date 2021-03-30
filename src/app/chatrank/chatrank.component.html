@@ -1,0 +1,30 @@
+<main>
+  <mat-card>Your chat rank is the rank you and your friends see when you hover over your profile icon on the top right</mat-card>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Queue</mat-label>
+    <mat-select [(value)]="queue">
+      <mat-option *ngFor="let queue of queues" [value]="queue">
+        {{queue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Rank</mat-label>
+    <mat-select [(value)]="rank">
+      <mat-option *ngFor="let rank of ranks" [value]="rank">
+        {{rank}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Division</mat-label>
+    <mat-select [(value)]="division">
+      <mat-option *ngFor="let division of divisions" [value]="division">
+        {{division}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <button (click)="chatRank()" mat-raised-button color="primary">Set Rank</button>
+</main>

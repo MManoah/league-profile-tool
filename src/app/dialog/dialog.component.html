@@ -1,0 +1,15 @@
+<ng-container
+  *ngIf="data.body === 'Success'; then Success; else Failure">
+</ng-container>
+<ng-template #Success>
+  <h1>Success</h1>
+  <p>Request made successfully</p>
+</ng-template>
+<ng-template #Failure>
+  <h1>Error</h1>
+  <p>{{data.body}}</p>
+</ng-template>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
+
