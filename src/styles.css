@@ -26,3 +26,6 @@ body {
 .simple-snack-bar .mat-simple-snackbar {
   justify-content: center;
 }
+.mat-card-header{
+  display: block !important;
+}

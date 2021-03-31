@@ -22,9 +22,12 @@ import {ChampionPurchaseDateComponent} from './champion-purchase-date/champion-p
 import {MatSortModule} from "@angular/material/sort";
 import {CustomapiComponent} from './customapi/customapi.component';
 import {FaqComponent} from './faq/faq.component';
+import { CustomiconComponent } from './customicon/customicon.component';
+import { IconsPipe } from './icons.pipe';
+import { PracticetoolComponent } from './practicetool/practicetool.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, StatusComponent, DialogComponent, ChibiComponent, BackgroundComponent, ChampionsPipe, ChatrankComponent, ChampionPurchaseDateComponent, CustomapiComponent, FaqComponent],
+  declarations: [AppComponent, HomeComponent, StatusComponent, DialogComponent, ChibiComponent, BackgroundComponent, ChampionsPipe, ChatrankComponent, ChampionPurchaseDateComponent, CustomapiComponent, FaqComponent, CustomiconComponent, IconsPipe, PracticetoolComponent],
   imports: [
     BrowserModule,
     FormsModule,

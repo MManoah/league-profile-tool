@@ -1,0 +1,10 @@
+<main>
+  <mat-card>This will allow you to add more bots to the practice tool</mat-card>
+  <div class="lobby">
+    <mat-form-field appearance="fill">
+      <mat-label>Lobby Name</mat-label>
+      <input matInput [(ngModel)]="lobbyName">
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" (click)="makeLobby()">Make Lobby</button>
+</main>

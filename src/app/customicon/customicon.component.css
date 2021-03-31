@@ -1,0 +1,19 @@
+img{
+  height: 100px;
+  width: 100px;
+}
+.mat-card{
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mat-form-field {
+  margin-top: 0.5rem;
+}
+.mat-stroked-button{
+  margin: 0.5rem;
+  padding: 1px;
+}
+.mat-form-field{
+  text-align: center;
+}

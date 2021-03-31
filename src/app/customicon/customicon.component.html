@@ -1,0 +1,22 @@
+<main>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Note</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>These icons will ONLY be seen by your friends, you will not be able to see them unless you hover over your name. These are not permanent and will reset.</p>
+    </mat-card-content>
+  </mat-card>
+  <form (submit)="$event.preventDefault()">
+    <mat-form-field>
+      <mat-label>Search by name or ID</mat-label>
+      <input matInput [(ngModel)]="searchKeyword" placeholder="Ex. Ahri">
+    </mat-form-field>
+  </form>
+  <div *ngIf="searchKeyword?.length >= 2">
+    <span class="icons" *ngFor="let icon of allIcons | icons: searchKeyword">
+        <button mat-stroked-button (click)="setIcon(icon.id)"><img onerror="this.onerror=null; this.remove()" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/{{icon.id}}.jpg" alt="{{icon.id}}"/></button>
+    </span>
+  </div>
+</main>
+
