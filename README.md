@@ -21,7 +21,7 @@ I developed this with no prior html/css/js knowledge and started working on this
 
 ### Preview
 
-![](https://i.gyazo.com/3521d05d65dc7a9a1a8f014e904f389b.png)
+![](https://i.gyazo.com/707e2a344d27184f2b8d2ec4c4f60ae8.png)
 
 ## Built With
 
