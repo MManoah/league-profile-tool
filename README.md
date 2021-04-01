@@ -5,7 +5,7 @@
 This application shows how data sent to the LCU can be modified or read to change visual stuff like, icon, background, hovercard, or read data such as profile data, friends, and more.
 
 ## How to install 
-[Click Here To Download Application 64 BIT](https://github.com/MManoah/league-profile-tool/releases/download/V.2.4.8/League.Profile.Tool.zipp)
+[Click Here To Download Application 64 BIT](https://github.com/MManoah/league-profile-tool/releases/download/V.2.4.8/League.Profile.Tool.zip)
 
 [Click Here To Download Application 32 BIT](https://github.com/MManoah/league-profile-tool/releases/download/V.2.4.8/League.Profile.Tool.32.BITS.zip)
 
