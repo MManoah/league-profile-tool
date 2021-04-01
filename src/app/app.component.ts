@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ElectronService} from './core/services';
-import {LCUConnection} from "./connector/LCUConnection";
+import {LCUConnection} from "./core/connector/LCUConnection";
 
 @Component({
   selector: 'app-root',
@@ -30,6 +30,7 @@ export class AppComponent {
       const auth = "Basic " + btoa(`${data["username"]}:${data["password"]}`);
       /* eslint-disable @typescript-eslint/restrict-template-expressions */
       LCUConnection.initInstance(url, auth);
+      clientConnection.stop();
     });
     clientConnection.start();
   }

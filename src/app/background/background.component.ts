@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LCUConnection} from "../connector/LCUConnection";
-import {DialogComponent} from "../dialog/dialog.component";
+import {LCUConnection} from "../core/connector/LCUConnection";
+import {DialogComponent} from "../core/dialog/dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({

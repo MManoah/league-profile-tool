@@ -13,17 +13,17 @@ import {StatusComponent} from './status/status.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from "@angular/material/dialog";
-import {DialogComponent} from './dialog/dialog.component';
+import {DialogComponent} from './core/dialog/dialog.component';
 import {ChibiComponent} from './chibi/chibi.component';
 import {BackgroundComponent} from './background/background.component';
-import {ChampionsPipe} from './champions.pipe';
+import {ChampionsPipe} from './core/pipes/champions/champions.pipe';
 import {ChatrankComponent} from './chatrank/chatrank.component';
 import {ChampionPurchaseDateComponent} from './champion-purchase-date/champion-purchase-date.component';
 import {MatSortModule} from "@angular/material/sort";
 import {CustomapiComponent} from './customapi/customapi.component';
 import {FaqComponent} from './faq/faq.component';
 import { CustomiconComponent } from './customicon/customicon.component';
-import { IconsPipe } from './icons.pipe';
+import { IconsPipe } from './core/pipes/icons/icons.pipe';
 import { PracticetoolComponent } from './practicetool/practicetool.component';
 
 @NgModule({

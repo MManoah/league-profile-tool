@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LCUConnection} from "../connector/LCUConnection";
+import {LCUConnection} from "../core/connector/LCUConnection";
 
 @Component({
   selector: 'app-customapi',

@@ -1,4 +1,4 @@
-import {ElectronService} from "../core/services";
+import {ElectronService} from "../services";
 import {endpoints} from "./endpoints";
 
 export class LCUConnection {

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {DialogComponent} from "../dialog/dialog.component";
-import {LCUConnection} from "../connector/LCUConnection";
+import {DialogComponent} from "../core/dialog/dialog.component";
+import {LCUConnection} from "../core/connector/LCUConnection";
 
 @Component({
   selector: 'app-chatrank',
