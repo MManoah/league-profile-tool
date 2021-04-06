@@ -9,12 +9,15 @@ import {LCUConnection} from "./core/connector/LCUConnection";
 })
 export class AppComponent {
   constructor(private electronService: ElectronService) {
-    let clientConnection: any;
+    const clientConnection = new electronService.LCUConnector();
     try {
       const file = electronService.fs.readFileSync("config\\clientPath.txt").toString(); // Will throw exception if file does not exist
       const path = file.split("\\").join("/");
-      if (path !== "") clientConnection = new electronService.LCUConnector(path); // Use user specified client path
-      else clientConnection = new electronService.LCUConnector(); // Make connection if clientPath.txt is empty
+      if (path !== "") {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        clientConnection._dirPath = path; // Use user specified client path
+      }
     } catch (err) {
       const dialogOptions = {
         type: "error",
@@ -22,7 +25,6 @@ export class AppComponent {
         message: "There was an error reading the client path from user config. Please check the file config/clientPath.txt",
       };
       electronService.dialog.showMessageBox(dialogOptions);
-      clientConnection = new electronService.LCUConnector(); // Try to make the connection if fs throws exception
     }
     clientConnection.on('connect', (data: Record<string, unknown>) => {
       /* eslint-disable @typescript-eslint/restrict-template-expressions */
