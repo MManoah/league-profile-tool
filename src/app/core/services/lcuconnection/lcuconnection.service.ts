@@ -1,30 +1,14 @@
-import {ElectronService} from "../services";
-import {endpoints} from "./endpoints";
+import { Injectable } from '@angular/core';
+import {ConnectorService} from "../connector/connector.service";
+import {ElectronService} from "..";
+import { endpoints } from "./endpoints";
 
-export class LCUConnection {
-  private static _instance: LCUConnection = null;
-  private readonly _options: Record<string, unknown>;
-  private _endpoints = endpoints;
-  private _services: ElectronService;
-
-  private constructor(ur: string, auth: string) {
-    this._services = new ElectronService();
-    this._options = {
-      rejectUnauthorized: false,
-      headers: {
-        Accept: "application/json",
-        Authorization: auth,
-      },
-      url: ur,
-    };
-  }
-
-  static initInstance(url: string, auth: string): void {
-    if (this._instance === null) this._instance = new LCUConnection(url, auth);
-  }
-
-  static get instance(): LCUConnection {
-    return this._instance;
+@Injectable({
+  providedIn: 'root'
+})
+export class LCUConnectionService {
+  private readonly _endpoints = endpoints;
+  constructor(private connector: ConnectorService, private electronService: ElectronService) {
   }
 
   public async requestSend(body: Record<string, unknown>, method: string, endpoint: string): Promise<any> {
@@ -36,11 +20,11 @@ export class LCUConnection {
   }
 
   private async makeRequest(method: string, body: Record<string, unknown>, endPoint: string, getFull: boolean): Promise<any> {
-    const options = JSON.parse(JSON.stringify(this._options));
+    const options = JSON.parse(JSON.stringify(this.connector.connector));
     options.url += endPoint;
     options.method = method;
     options.body = JSON.stringify(body);
-    return await this._services.request(options)
+    return await this.electronService.request(options)
       .then(response => {
         return new Promise(function (resolve) {
           if (!getFull) resolve('Success');
@@ -53,4 +37,5 @@ export class LCUConnection {
         });
       });
   }
+
 }

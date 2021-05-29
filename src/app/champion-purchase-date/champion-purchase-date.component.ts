@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {LCUConnection} from "../core/connector/LCUConnection";
 import {DialogComponent} from "../core/dialog/dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Sort} from '@angular/material/sort';
+import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
 
 
 @Component({
@@ -18,7 +18,7 @@ export class ChampionPurchaseDateComponent implements OnInit {
   public currentVersion = 0;
   private championData = [];
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -70,7 +70,7 @@ export class ChampionPurchaseDateComponent implements OnInit {
 
   public getOwnership(): void {
     this.ownedChamps = [];
-    LCUConnection.instance.requestCustomAPI({}, 'GET', '/lol-summoner/v1/current-summoner').then(response => {
+    this.lcuConnectionService.requestCustomAPI({}, 'GET', '/lol-summoner/v1/current-summoner').then(response => {
       if (typeof response !== 'string') {
         this.dialog.open(DialogComponent, {
           data: {body: response}
@@ -78,12 +78,13 @@ export class ChampionPurchaseDateComponent implements OnInit {
       } else {
         const summonerID = JSON.parse(response).summonerId;
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        LCUConnection.instance.requestCustomAPI({}, 'GET', `/lol-champions/v1/inventories/${summonerID}/champions`).then(ownedC => {
+        this.lcuConnectionService.requestCustomAPI({}, 'GET', `/lol-champions/v1/inventories/${summonerID}/champions`).then(ownedC => {
           if (typeof response !== 'string') {
             this.dialog.open(DialogComponent, {
               data: {body: response}
             });
           } else {
+            // Fix fiddlesticks
             const champions = JSON.parse(ownedC);
             for (let i = 0; i < champions.length; i++) {
               if (champions[i].ownership.owned) {

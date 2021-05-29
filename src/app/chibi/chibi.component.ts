@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {LCUConnection} from "../core/connector/LCUConnection";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../core/dialog/dialog.component";
+import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
 
 @Component({
   selector: 'app-chibi',
@@ -10,14 +10,14 @@ import {DialogComponent} from "../core/dialog/dialog.component";
 })
 export class ChibiComponent {
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
   public chibiIcon(id: number): void {
     const body = {
       profileIconId: id
     };
-    LCUConnection.instance.requestSend(body, 'PUT', 'chibiIcon').then(response => {
+    this.lcuConnectionService.requestSend(body, 'PUT', 'chibiIcon').then(response => {
       this.dialog.open(DialogComponent, {
         data: {body: response}
       });

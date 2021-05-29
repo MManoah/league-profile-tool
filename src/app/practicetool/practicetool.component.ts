@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {LCUConnection} from "../core/connector/LCUConnection";
 import {DialogComponent} from "../core/dialog/dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
 
 @Component({
   selector: 'app-practicetool',
@@ -11,7 +11,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class PracticetoolComponent {
   public lobbyName = "";
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
   public makeLobby(): void {
@@ -34,7 +34,7 @@ export class PracticetoolComponent {
       },
       "isCustom": true
     };
-    LCUConnection.instance.requestSend(body, 'POST', 'lobby').then(response => {
+    this.lcuConnectionService.requestSend(body, 'POST', 'lobby').then(response => {
       this.dialog.open(DialogComponent, {
         data: {body: response}
       });

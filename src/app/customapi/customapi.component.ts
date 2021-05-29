@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LCUConnection} from "../core/connector/LCUConnection";
+import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
 
 @Component({
   selector: 'app-customapi',
@@ -13,7 +13,7 @@ export class CustomapiComponent {
   public response: string;
   public endPoint: string;
 
-  constructor() {
+  constructor(private lcuConnectionService: LCUConnectionService) {
   }
 
   public sendRequest(): void {
@@ -24,7 +24,7 @@ export class CustomapiComponent {
       this.response = 'Invalid JSON Format';
       return;
     }
-    LCUConnection.instance.requestCustomAPI(body, this.method, this.endPoint).then(response => {
+    this.lcuConnectionService.requestCustomAPI(body, this.method, this.endPoint).then(response => {
       this.response = JSON.stringify(JSON.parse(response), null, 3);
     });
   }

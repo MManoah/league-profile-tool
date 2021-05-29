@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../core/dialog/dialog.component";
-import {LCUConnection} from "../core/connector/LCUConnection";
+import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
 
 @Component({
   selector: 'app-chatrank',
@@ -16,7 +16,7 @@ export class ChatrankComponent {
   public division: string;
   public rank: string;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
   public chatRank(): void {
@@ -27,7 +27,7 @@ export class ChatrankComponent {
         rankedLeagueDivision: this.division,
       },
     };
-    LCUConnection.instance.requestSend(body, 'PUT', 'lolChat').then(response => {
+    this.lcuConnectionService.requestSend(body, 'PUT', 'lolChat').then(response => {
       this.dialog.open(DialogComponent, {
         data: {body: response}
       });

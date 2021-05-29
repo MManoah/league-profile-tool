@@ -25,6 +25,8 @@ import {FaqComponent} from './faq/faq.component';
 import { CustomiconComponent } from './customicon/customicon.component';
 import { IconsPipe } from './core/pipes/icons/icons.pipe';
 import { PracticetoolComponent } from './practicetool/practicetool.component';
+import {ElectronService} from "./core/services";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, StatusComponent, DialogComponent, ChibiComponent, BackgroundComponent, ChampionsPipe, ChatrankComponent, ChampionPurchaseDateComponent, CustomapiComponent, FaqComponent, CustomiconComponent, IconsPipe, PracticetoolComponent],
@@ -41,8 +43,9 @@ import { PracticetoolComponent } from './practicetool/practicetool.component';
     MatDialogModule,
     MatSelectModule,
     MatSortModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ElectronService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {LCUConnection} from "../core/connector/LCUConnection";
 import {DialogComponent} from "../core/dialog/dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
 
 @Component({
   selector: 'app-background',
@@ -15,7 +15,7 @@ export class BackgroundComponent implements OnInit {
   public skinsImages = [];
   public searchText: string;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -64,7 +64,7 @@ export class BackgroundComponent implements OnInit {
       key: "backgroundSkinId",
       value: parseInt(id)
     };
-    LCUConnection.instance.requestSend(body, 'POST', 'profile').then(response => {
+    this.lcuConnectionService.requestSend(body, 'POST', 'profile').then(response => {
       this.dialog.open(DialogComponent, {
         data: {body: response}
       });
