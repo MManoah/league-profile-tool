@@ -7,7 +7,7 @@ This application shows how data sent to the LCU can be modified or read to chang
 ## How to install 
 [Click Here To Download Application 64 BIT](https://github.com/MManoah/league-profile-tool/releases/download/V.2.4.8/League.Profile.Tool.zip)
 
-[Click Here To Download Application 32 BIT](https://github.com/MManoah/league-profile-tool/releases/download/V.2.4.8/League.Profile.Tool.32.BITS.zip)
+[Click Here To Download Application 32 BIT](https://github.com/MManoah/league-profile-tool/releases/download/V.2.4.8/League.Profile.Tool.32.Bits.zip)
 
 then extract all the files somewhere and run League Profile Tool.exe
 
