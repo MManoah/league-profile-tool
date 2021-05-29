@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DialogComponent} from "../core/dialog/dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
+import {ChampionService} from "../core/services/champion/champion.service";
 
 @Component({
   selector: 'app-customicon',
@@ -12,17 +13,17 @@ export class CustomiconComponent implements OnInit {
   public searchKeyword: string;
   public allIcons: [Record<string, unknown>];
 
-  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
+  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService, private championData: ChampionService) {
   }
 
-  async ngOnInit(): Promise<void> {
-    const link = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/summoner-icons.json';
-    await (await fetch(link)).json().then(icons => {
+  async ngOnInit() {
+    this.championData.getSummonerIcons().subscribe(icons => {
+      // @ts-ignore
       this.allIcons = icons;
-    });
+    })
   }
 
-  public setIcon(id: number): void {
+  public setIcon(id: number) {
     const body = {
       icon: id
     };

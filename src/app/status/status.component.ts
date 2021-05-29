@@ -14,7 +14,7 @@ export class StatusComponent {
   constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
-  public setStatus(): void {
+  public setStatus() {
     const body = {
       statusMessage: this.text
     };

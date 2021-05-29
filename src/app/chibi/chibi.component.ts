@@ -13,7 +13,7 @@ export class ChibiComponent {
   constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
-  public chibiIcon(id: number): void {
+  public chibiIcon(id: number) {
     const body = {
       profileIconId: id
     };

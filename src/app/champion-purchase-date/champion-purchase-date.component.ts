@@ -3,6 +3,7 @@ import {DialogComponent} from "../core/dialog/dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Sort} from '@angular/material/sort';
 import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
+import {VersionService} from "../core/services/version/version.service";
 
 
 @Component({
@@ -18,17 +19,15 @@ export class ChampionPurchaseDateComponent implements OnInit {
   public currentVersion = 0;
   private championData = [];
 
-  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
+  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService, private version: VersionService) {
   }
 
-  async ngOnInit(): Promise<void> {
-    const url = "https://ddragon.leagueoflegends.com/api/versions.json";
-    await (await fetch(url)).json().then(versions => {
-      this.currentVersion = versions[0];
-    });
+  async ngOnInit() {
+    this.version.apiVersion().subscribe(v => {
+      this.currentVersion = v[0];
+    })
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   public sortData(sort: Sort) {
     const data = this.championData.slice();
     if (!sort.active || sort.direction === '') {
@@ -48,7 +47,7 @@ export class ChampionPurchaseDateComponent implements OnInit {
     });
   }
 
-  public showSkins(champion: Record<string, unknown>): void {
+  public showSkins(champion: Record<string, unknown>) {
     this.showingSkins = true;
     this.championData = [];
     this.championData.push({
@@ -56,7 +55,6 @@ export class ChampionPurchaseDateComponent implements OnInit {
       purchased: champion.purchased,
       purchasedHidden: champion.purchasedHidden
     });
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     for (let i = 0; i < champion.skins.length; i++) {
       this.championData.push({
@@ -68,7 +66,7 @@ export class ChampionPurchaseDateComponent implements OnInit {
     this.sortedData = this.championData.slice();
   }
 
-  public getOwnership(): void {
+  public getOwnership() {
     this.ownedChamps = [];
     this.lcuConnectionService.requestCustomAPI({}, 'GET', '/lol-summoner/v1/current-summoner').then(response => {
       if (typeof response !== 'string') {
@@ -77,14 +75,12 @@ export class ChampionPurchaseDateComponent implements OnInit {
         });
       } else {
         const summonerID = JSON.parse(response).summonerId;
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         this.lcuConnectionService.requestCustomAPI({}, 'GET', `/lol-champions/v1/inventories/${summonerID}/champions`).then(ownedC => {
           if (typeof response !== 'string') {
             this.dialog.open(DialogComponent, {
               data: {body: response}
             });
           } else {
-            // Fix fiddlesticks
             const champions = JSON.parse(ownedC);
             for (let i = 0; i < champions.length; i++) {
               if (champions[i].ownership.owned) {

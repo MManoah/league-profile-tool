@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {ConnectorService} from "../connector/connector.service";
 import {ElectronService} from "..";
 import { endpoints } from "./endpoints";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LCUConnectionService {
   private readonly _endpoints = endpoints;
-  constructor(private connector: ConnectorService, private electronService: ElectronService) {
+  constructor(private connector: ConnectorService, private electronService: ElectronService, private http: HttpClient) {
   }
 
   public async requestSend(body: Record<string, unknown>, method: string, endpoint: string): Promise<any> {

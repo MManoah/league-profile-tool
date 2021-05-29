@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor() {
   }
 
-  async ngOnInit(): Promise<void> {
+  async ngOnInit() {
     try {
       const url = 'https://raw.githubusercontent.com/MManoah/league-profile-tool/master/version.json';
       const obj = await (await fetch(url)).json();
@@ -25,11 +25,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public github(): void {
+  public github() {
     this._remote.openExternal('https://github.com/MManoah/league-profile-tool');
   }
 
-  public youtube(): void {
+  public youtube() {
     this._remote.openExternal('https://www.youtube.com/c/mmanoah');
   }
 }

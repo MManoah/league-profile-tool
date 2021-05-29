@@ -14,7 +14,7 @@ export class PracticetoolComponent {
   constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
-  public makeLobby(): void {
+  public makeLobby() {
     if (this.lobbyName === "") this.lobbyName = "Practice Tool";
     const body = {
       "customGameLobby": {

@@ -16,7 +16,7 @@ export class CustomapiComponent {
   constructor(private lcuConnectionService: LCUConnectionService) {
   }
 
-  public sendRequest(): void {
+  public sendRequest() {
     let body: Record<string, unknown>;
     try {
       body = JSON.parse(this.body);

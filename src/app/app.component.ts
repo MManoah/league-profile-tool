@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {LCUConnectionService} from "./core/services/lcuconnection/lcuconnection.service";
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,6 @@ import {LCUConnectionService} from "./core/services/lcuconnection/lcuconnection.
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private lcuConnection: LCUConnectionService) {
+  constructor() {
   }
 }

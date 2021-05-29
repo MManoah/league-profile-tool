@@ -19,7 +19,7 @@ export class ChatrankComponent {
   constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService) {
   }
 
-  public chatRank(): void {
+  public chatRank() {
     const body = {
       lol: {
         rankedLeagueQueue: this.queue,
