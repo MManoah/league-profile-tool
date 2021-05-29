@@ -9,7 +9,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class LCUConnectionService {
   private readonly _endpoints = endpoints;
-  constructor(private connector: ConnectorService, private electronService: ElectronService, private http: HttpClient) {
+  constructor(private connector: ConnectorService, private electronService: ElectronService) {
   }
 
   public async requestSend(body: Record<string, unknown>, method: string, endpoint: string): Promise<any> {
