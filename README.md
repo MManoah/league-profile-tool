@@ -1,6 +1,6 @@
 # League of Legends Profile Tool
 
-### Discord Server For Help: https://discord.gg/7C65msm
+This project will not be maintained anymore. Thank you to everyone who enjoyed it!
 
 This application shows how data sent to the LCU can be modified or read to change visual stuff like, icon, background, hovercard, or read data such as profile data, friends, and more.
 
@@ -17,7 +17,7 @@ then extract all the files somewhere and run League Profile Tool.exe
 
 ### Purpose 
 
-I developed this with no prior html/css/js knowledge and started working on this just to learn Javascript and DOM manipulation.
+I developed this as an undergraduate student with no prior html/css/js knowledge and started working on this just to learn Javascript and DOM manipulation.
 
 ### Preview
 
