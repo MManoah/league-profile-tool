@@ -21,7 +21,7 @@ I developed this as an undergraduate student with no prior html/css/js knowledge
 
 ### Preview
 
-![](https://i.gyazo.com/707e2a344d27184f2b8d2ec4c4f60ae8.png)
+![](https://i.gyazo.com/9f010ff86490fe37e78bb8430faa0dc7.png)
 
 ## Built With
 
