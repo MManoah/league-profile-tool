@@ -15,7 +15,7 @@ export class ConnectorService {
       const path = file.split("\\").join("/");
       if (path !== "") {
         // @ts-ignore
-        this.clientConnection._dirPath = path; // Use user specified client path
+        clientConnection._dirPath = path; // Use user specified client path
       }
     } catch (err) {
       const dialogOptions = {
