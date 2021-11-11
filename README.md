@@ -1,6 +1,6 @@
 # League of Legends Profile Tool
 
-**This project will not be maintained anymore. Thank you to everyone who enjoyed it!**
+This project will not be maintained anymore. Thank you to everyone who enjoyed it!
 
 This application shows how data sent to the LCU can be modified or read to change visual stuff like, icon, background, hovercard, or read data such as profile data, friends, and more.
 
