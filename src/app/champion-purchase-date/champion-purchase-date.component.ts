@@ -102,6 +102,9 @@ export class ChampionPurchaseDateComponent implements OnInit {
                 this.ownedChamps.push(o);
               }
             }
+            this.ownedChamps.sort((a, b) => {
+              return compare(a.purchasedHidden, b.purchasedHidden, true);
+            });
           }
         });
       }

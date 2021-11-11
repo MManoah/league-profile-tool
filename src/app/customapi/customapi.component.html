@@ -10,16 +10,16 @@
   </mat-form-field>
     <mat-form-field>
       <mat-label>Endpoint</mat-label>
-      <input matInput [(ngModel)]="endPoint">
+      <input matInput [(ngModel)]="endPoint" name="endpoint">
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="sendRequest()">Request</button>
   </form>
   <mat-form-field class="default" appearance="fill">
     <mat-label>Body</mat-label>
-    <textarea matInput [(ngModel)]="body"></textarea>
+    <textarea matInput [(ngModel)]="body" name="body"></textarea>
   </mat-form-field>
   <mat-form-field class="default" appearance="fill">
     <mat-label>Response</mat-label>
-    <textarea matInput [(ngModel)]="response"></textarea>
+    <textarea matInput [(ngModel)]="response" name="response"></textarea>
   </mat-form-field>
 </main>

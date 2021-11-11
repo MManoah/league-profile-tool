@@ -10,7 +10,7 @@
   <form (submit)="$event.preventDefault()">
     <mat-form-field>
       <mat-label>Search by name or ID</mat-label>
-      <input matInput [(ngModel)]="searchKeyword" placeholder="Ex. Ahri">
+      <input matInput [(ngModel)]="searchKeyword" name="search" placeholder="Ex. Ahri">
     </mat-form-field>
   </form>
   <div *ngIf="searchKeyword?.length >= 2">
