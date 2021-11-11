@@ -8,7 +8,7 @@ import {ElectronService} from "../core/services";
 })
 export class HomeComponent implements OnInit {
   public title = 'LEAGUE PROFILE TOOL';
-  public currentVersion = 'V.2.4.8';
+  public currentVersion = 'V.2.4.9';
   public newestVersion = '';
   private _remote = new ElectronService().shell; // To open the default browser window for links instead of making a new electron window
 
